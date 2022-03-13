@@ -1,8 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
-// import SignInScreen from './screens/SignInScreen/SignInScreen'
-// import SignUpScreen from './screens/SignUpScreen/SignUpScreen'
-import TestScreen from './src/screens/TestScreen/TestScreen'
+import Navigation from './src/navigation'
 
 
 export default function App() {
@@ -10,7 +8,7 @@ export default function App() {
     
     <SafeAreaView style={styles.root}>
 
-    <TestScreen />
+    <Navigation/>
     
     <StatusBar style="auto" />
   </SafeAreaView>

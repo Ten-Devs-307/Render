@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, useWindowDimensions } from 'react-native'
 import React from 'react'
-import Logo from '../../../assets/images/Render.png'
+import Logo from '../../../assets/images/get-things-done.png'
 import CustomButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import { useNavigation } from '@react-navigation/native'
@@ -18,8 +18,8 @@ const SignInScreen = () => {
   };
 
   const onSignInPress = () => {
-    console.warn("Start Up");
-    navigation.navigate('StartUp');
+    console.warn("Sign In");
+    navigation.navigate('SignIn');
   };
 
   return (
@@ -30,17 +30,15 @@ const SignInScreen = () => {
 
         {/* {height: height * 0.3} */}
 
-        <Text style={styles.header} >Welcome back!</Text>
-      <Text style={styles.label} >Email</Text>
-      <CustomInput placeholder='' />
+        <Text style={styles.header} >Get things done with Render!</Text>
+        <Text style={styles.header1} >Easy, Convenient and Affordable</Text>
+        <Text style={styles.header2} >Search and book a labourer with just a click anytime and anywhere.</Text>
+         
 
-      <Text style={styles.label} >Password</Text>
-      <CustomInput placeholder='' secureTextEntry={true} />
       <CustomButton text='Sign In' onPress={onSignInPress} />
+      <CustomButton text='Sign Up' onPress={onSignUpPress} />
        
-       <TouchableOpacity onPress={onSignUpPress} >
-         <Text style={styles.text} >Don't have an account? <Text style={styles.signin}>Sign Up</Text></Text>
-       </TouchableOpacity>
+       
 
 
     </View>
@@ -58,12 +56,6 @@ const styles = StyleSheet.create({
       // alignItems: '',
       fontSize: 18,
     },
-    text: {
-      fontSize: 16,
-      paddingTop: 20,
-      alignSelf: 'center',
-      color: '#000'
-    },
     signin: {
       fontWeight: 'bold',
     },
@@ -76,10 +68,23 @@ const styles = StyleSheet.create({
     },
     header: {
       fontSize: 26,
-      marginBottom: 30,
+      marginBottom: 10,
       fontWeight: '700',
-      // alignSelf: 'center'
-    }
+      alignSelf: 'center'
+    },
+    header1: {
+        fontSize: 20,
+        padding: 10,
+        fontWeight: '500',
+        textAlign: 'center',
+        color: '#000'
+      },
+      header2: {
+        fontSize: 16,
+        padding: 10,
+        textAlign: 'center',
+        color: '#000'
+      },
 });
 
 
