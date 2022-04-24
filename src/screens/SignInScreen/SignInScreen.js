@@ -24,13 +24,13 @@ const SignInScreen = () => {
 	// const value = useContext(AuthContext);
 
 	const onSignUpPress = () => {
-		console.warn("Sign Up");
+		// console.warn("Sign Up");
 		navigation.navigate("SignUp");
 	};
 
 	const onSignInPress = () => {
-		console.warn("Start Up");
-		navigation.navigate("StartUp");
+		// console.warn("Start Up");
+		navigation.navigate("HomeScreen");
 	};
 
 	return (

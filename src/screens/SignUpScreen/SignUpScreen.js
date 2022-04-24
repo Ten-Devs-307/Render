@@ -18,7 +18,7 @@ const SignUpScreen = () => {
 	const navigation = useNavigation();
 
 	const onLoginPress = () => {
-		console.warn("Take me to Sign In");
+		// console.warn("Take me to Sign In");
 		navigation.navigate("SignIn");
 	};
 

@@ -18,12 +18,12 @@ const SignInScreen = () => {
 	const navigation = useNavigation();
 
 	const onSignUpPress = () => {
-		console.warn("Sign Up");
+		// console.warn("Sign Up");
 		navigation.navigate("SignUp");
 	};
 
 	const onSignInPress = () => {
-		console.warn("Sign In");
+		// console.warn("Sign In");
 		navigation.navigate("SignIn");
 	};
 
