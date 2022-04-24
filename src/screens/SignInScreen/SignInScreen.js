@@ -12,7 +12,7 @@ import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";
 import { useContext } from "react/cjs/react.production.min";
-import { AuthContext } from "../../context/AuthContext";
+// import { AuthContext } from "../../context/AuthContext";
 
 const SignInScreen = () => {
 	const navigation = useNavigation();

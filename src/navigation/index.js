@@ -17,10 +17,10 @@ const Navigation = () => {
 			<Stack.Navigator screenOptions={{ headerShown: true }}>
 				<Stack.Screen name="StartUp" component={StartUpScreen} />
 				<Stack.Screen name="SignIn" component={SignInScreen} />
+				<Stack.Screen name="ForgotPassword" component={ForgotPassword} />
 				<Stack.Screen name="SignUp" component={SignUpScreen} />
 				<Stack.Screen name="HomeScreen" component={HomeScreen} />
 				<Stack.Screen name="UserProfile" component={UserProfile} />
-				<Stack.Screen name="ForgotPassword" component={ForgotPassword} />
 
 				{/* <Text>Hello World</Text> */}
 			</Stack.Navigator>
