@@ -5,20 +5,17 @@ import CustomButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import {useNavigation} from '@react-navigation/native';
 import { AuthContext } from '../../context/AuthContext';
-// const {height} = useWindowDimensions();
 
 
 const SignUpScreen = () => {
+  const [email, setEmail] = useState(null);
+  const [password1, setPassword1] = useState(null);
+  const [password2, setPassword2] = useState(null);
+
 
   const navigation = useNavigation ();
 
-  const onLoginPress = () => {
-    console.warn('Take me to Sign In')
-    navigation.navigate('SignIn')
-  };
-
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const {register} = useContext(AuthContext);
   const val = useContext(AuthContext);
 
   return (
@@ -32,16 +29,20 @@ const SignUpScreen = () => {
       <Text style={styles.header} >Create an account.</Text>
       <Text>{val}</Text>
       <Text style={styles.label} >Email</Text>
-      <CustomInput placeholder=''value={email} onChangeText={text => setEmail(text)} />
+      <CustomInput placeholder='' value={email} onChangeText={text => setEmail(text)} />
 
       <Text style={styles.label} >Password</Text>
-      <CustomInput placeholder='' secureTextEntry={true} />
+      <CustomInput placeholder='' secureTextEntry={true} value={password1} onChangeText={text => setPassword1(text)}/>
 
       <Text style={styles.label} >Re-enter Password</Text>
-      <CustomInput placeholder='' secureTextEntry={true} />
+      <CustomInput placeholder='' secureTextEntry={true} value={password2} onChangeText={text => setPassword2(text)}/>
 
 
-      <CustomButton text='Sign Up' />
+      <CustomButton
+        text='Sign Up'
+        onPress={() => {
+        register(email, password1, password2);
+        }}/>
       <Text style={styles.text} >By signing up, you agree to our Terms and Service and Privacy Policy.</Text>
       
 
