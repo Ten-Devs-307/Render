@@ -33,6 +33,11 @@ const SignInScreen = () => {
 		navigation.navigate("HomeScreen");
 	};
 
+	const onForgotPasswordPress = () => {
+		// console.warn("Start Up");
+		navigation.navigate("ForgotPassword");
+	};
+
 	return (
 		<View style={styles.root}>
 			<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
@@ -62,6 +67,9 @@ const SignInScreen = () => {
 				<Text style={styles.text}>
 					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
 				</Text>
+			</TouchableOpacity>
+			<TouchableOpacity onPress={onForgotPasswordPress}>
+				<Text style={styles.forgot_password}>Forgot Password</Text>
 			</TouchableOpacity>
 		</View>
 	);
@@ -99,6 +107,12 @@ const styles = StyleSheet.create({
 		marginBottom: 30,
 		fontWeight: "700",
 		// alignSelf: 'center'
+	},
+	forgot_password: {
+		color: "#00d000",
+		alignSelf: "center",
+		paddingTop: 10,
+		fontSize: 16,
 	},
 });
 

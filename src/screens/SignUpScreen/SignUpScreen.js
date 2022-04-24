@@ -4,6 +4,7 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 	Image,
+	ScrollView,
 	useWindowDimensions,
 } from "react-native";
 import React from "react";
@@ -23,46 +24,43 @@ const SignUpScreen = () => {
 	};
 
 	return (
-		<View style={styles.root}>
-			<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
-
-			{/* {height: height * 0.3} */}
-
-			<Text style={styles.header}>Create an account.</Text>
-			<Text style={styles.label}>Email</Text>
-			<CustomInput placeholder="" />
-
-			<Text style={styles.label}>Password</Text>
-			<CustomInput placeholder="" secureTextEntry={true} />
-
-			<Text style={styles.label}>Re-enter Password</Text>
-			<CustomInput placeholder="" secureTextEntry={true} />
-
-			<CustomButton text="Sign Up" />
-			<Text style={styles.text}>
-				By signing up, you agree to our Terms and Service and Privacy Policy.
-			</Text>
-
-			<Text style={styles.text}>
-				Have an account?
-				<TouchableOpacity>
-					<Text style={styles.login} onPress={onLoginPress}>
-						{" "}
-						Log In
-					</Text>
-				</TouchableOpacity>
-			</Text>
-		</View>
+		<ScrollView>
+			<View style={styles.root}>
+				<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
+				{/* {height: height * 0.3} */}
+				<Text style={styles.header}>Create an account.</Text>
+				<Text style={styles.label}>Email</Text>
+				<CustomInput placeholder="" />
+				<Text style={styles.label}>Password</Text>
+				<CustomInput placeholder="" secureTextEntry={true} />
+				<Text style={styles.label}>Re-enter Password</Text>
+				<CustomInput placeholder="" secureTextEntry={true} />
+				<CustomButton text="Sign Up" />
+				<Text style={styles.text}>
+					By signing up, you agree to our Terms and Service and Privacy Policy.
+				</Text>
+				<Text style={styles.text}>
+					Have an account?
+					<TouchableOpacity>
+						<Text style={styles.login} onPress={onLoginPress}>
+							{" "}
+							Log In
+						</Text>
+					</TouchableOpacity>
+				</Text>
+			</View>
+		</ScrollView>
 	);
 };
 
 const styles = StyleSheet.create({
 	root: {
-		// alignItems: 'center',
 		justifyContent: "center",
 		flex: 1,
+		// paddingHorizontal: 20,
 		padding: 20,
 	},
+
 	label: {
 		// alignItems: '',
 		fontSize: 18,
