@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, useWindowDimensions } from 'react-native'
-import React from 'react'
+import React,{useContext, useState} from 'react'
 import Logo from '../../../assets/images/Render.png';
 import CustomButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import {useNavigation} from '@react-navigation/native';
-
+import { AuthContext } from '../../context/AuthContext';
 // const {height} = useWindowDimensions();
 
 
@@ -17,6 +17,10 @@ const SignUpScreen = () => {
     navigation.navigate('SignIn')
   };
 
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const val = useContext(AuthContext);
+
   return (
     <View style={styles.root}>
       
@@ -25,9 +29,10 @@ const SignUpScreen = () => {
 
         {/* {height: height * 0.3} */}
 
-        <Text style={styles.header} >Create an account.</Text>
+      <Text style={styles.header} >Create an account.</Text>
+      <Text>{val}</Text>
       <Text style={styles.label} >Email</Text>
-      <CustomInput placeholder='' />
+      <CustomInput placeholder=''value={email} onChangeText={text => setEmail(text)} />
 
       <Text style={styles.label} >Password</Text>
       <CustomInput placeholder='' secureTextEntry={true} />

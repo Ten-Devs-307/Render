@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, useWindowDimensions } from 'react-native'
-import React from 'react'
+import React, {useContext, useState} from 'react'
 import Logo from '../../../assets/images/Render.png'
 import CustomButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import { useNavigation } from '@react-navigation/native'
+
+import { AuthContext } from '../../context/AuthContext';
 
 // const {height} = useWindowDimensions();
 
@@ -21,21 +23,24 @@ const SignInScreen = () => {
     console.warn("Start Up");
     navigation.navigate('StartUp');
   };
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  const val = useContext(AuthContext);
 
   return (
     <View style={styles.root}>
       
       <Image source={Logo} style={[styles.logo]}
           resizeMode="contain" />
-
         {/* {height: height * 0.3} */}
-
-        <Text style={styles.header} >Welcome back!</Text>
+      <Text style={styles.header} >Welcome back!</Text>
+      <Text>{val}</Text>
       <Text style={styles.label} >Email</Text>
-      <CustomInput placeholder='' />
+      <CustomInput placeholder='' onChangeText={text => setEmail(text)} value={email}/>
 
       <Text style={styles.label} >Password</Text>
-      <CustomInput placeholder='' secureTextEntry={true} />
+      <CustomInput placeholder='' secureTextEntry={true} onChangeText={text => setPassword(text)} value={password}/>
       <CustomButton text='Sign In' onPress={onSignInPress} />
        
        <TouchableOpacity onPress={onSignUpPress} >
