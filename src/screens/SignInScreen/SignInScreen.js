@@ -1,86 +1,105 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image, useWindowDimensions } from 'react-native'
-import React from 'react'
-import Logo from '../../../assets/images/Render.png'
-import CustomButton from '../../components/CustomButton'
-import CustomInput from '../../components/CustomInput'
-import { useNavigation } from '@react-navigation/native'
+import {
+	View,
+	Text,
+	StyleSheet,
+	TouchableOpacity,
+	Image,
+	useWindowDimensions,
+} from "react-native";
+import React, { useState } from "react";
+import Logo from "../../../assets/images/Render.png";
+import CustomButton from "../../components/CustomButton";
+import CustomInput from "../../components/CustomInput";
+import { useNavigation } from "@react-navigation/native";
+import { useContext } from "react/cjs/react.production.min";
+import { AuthContext } from "../../context/AuthContext";
 
 // const {height} = useWindowDimensions();
 
-
 const SignInScreen = () => {
+	const navigation = useNavigation();
 
-  const navigation = useNavigation();
+	const [email, setEmail] = useState(null);
+	const [password, setPassword] = useState(null);
+	// const value = useContext(AuthContext);
 
-  const onSignUpPress = () => {
-    console.warn("Sign Up");
-    navigation.navigate('SignUp');
-  };
+	const onSignUpPress = () => {
+		console.warn("Sign Up");
+		navigation.navigate("SignUp");
+	};
 
-  const onSignInPress = () => {
-    console.warn("Start Up");
-    navigation.navigate('StartUp');
-  };
+	const onSignInPress = () => {
+		console.warn("Start Up");
+		navigation.navigate("StartUp");
+	};
 
-  return (
-    <View style={styles.root}>
-      
-      <Image source={Logo} style={[styles.logo]}
-          resizeMode="contain" />
+	return (
+		<View style={styles.root}>
+			<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
 
-        {/* {height: height * 0.3} */}
+			{/* {height: height * 0.3} */}
 
-        <Text style={styles.header} >Welcome back!</Text>
-      <Text style={styles.label} >Email</Text>
-      <CustomInput placeholder='' />
+			<Text style={styles.header}>Welcome back!</Text>
 
-      <Text style={styles.label} >Password</Text>
-      <CustomInput placeholder='' secureTextEntry={true} />
-      <CustomButton text='Sign In' onPress={onSignInPress} />
-       
-       <TouchableOpacity onPress={onSignUpPress} >
-         <Text style={styles.text} >Don't have an account? <Text style={styles.signin}>Sign Up</Text></Text>
-       </TouchableOpacity>
+			{/* <Text>{value}</Text> */}
+			<Text style={styles.label}>Email</Text>
+			<CustomInput
+				placeholder=""
+				value={email}
+				onChangeText={(text) => setEmail(text)}
+			/>
 
+			<Text style={styles.label}>Password</Text>
+			<CustomInput
+				placeholder=""
+				secureTextEntry={true}
+				value={password}
+				onChangeText={(text) => setPassword(text)}
+			/>
+			<CustomButton text="Sign In" onPress={onSignInPress} />
 
-    </View>
-  );
+			<TouchableOpacity onPress={onSignUpPress}>
+				<Text style={styles.text}>
+					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
+				</Text>
+			</TouchableOpacity>
+		</View>
+	);
 };
 
 const styles = StyleSheet.create({
-    root: {
-      // alignItems: 'center',
-      justifyContent: 'center',
-      flex: 1,
-      padding: 20,
-    },
-    label: {
-      // alignItems: '',
-      fontSize: 18,
-    },
-    text: {
-      fontSize: 16,
-      paddingTop: 20,
-      alignSelf: 'center',
-      color: '#000'
-    },
-    signin: {
-      fontWeight: 'bold',
-    },
-    logo: {
-      width: '80%',
-      maxWidth: 300,
-      maxHeight: 200,
-      alignSelf: 'center',
-      marginBottom: 30,
-    },
-    header: {
-      fontSize: 26,
-      marginBottom: 30,
-      fontWeight: '700',
-      // alignSelf: 'center'
-    }
+	root: {
+		// alignItems: 'center',
+		justifyContent: "center",
+		flex: 1,
+		paddingHorizontal: 20,
+	},
+	label: {
+		// alignItems: '',
+		fontSize: 18,
+	},
+	text: {
+		fontSize: 16,
+		paddingTop: 20,
+		alignSelf: "center",
+		color: "#000",
+	},
+	signin: {
+		fontWeight: "bold",
+	},
+	logo: {
+		width: "80%",
+		maxWidth: 300,
+		maxHeight: 200,
+		alignSelf: "center",
+		marginBottom: 30,
+	},
+	header: {
+		fontSize: 26,
+		marginBottom: 30,
+		fontWeight: "700",
+		// alignSelf: 'center'
+	},
 });
 
-
-export default SignInScreen
+export default SignInScreen;
