@@ -1,10 +1,14 @@
-import React from "react";
-import { createContext } from "react/cjs/react.production.min";
+import React,{createContext} from 'react';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-	return (
-		<AuthContext.Provider value="Test Value">{children}</AuthContext.Provider>
-	);
-};
+
+   const register = () => {
+   }
+   return(
+      <AuthContext.Provider value="Hello this is a trial">
+         {children}
+      </AuthContext.Provider>
+   );
+}

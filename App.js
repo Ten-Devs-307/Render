@@ -1,18 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import Navigation from "./src/navigation";
-import { AuthProvider } from "./src/context/AuthContext";
+import { StatusBar } from 'expo-status-bar'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import Navigation from './src/navigation'
+
+import { AuthProvider } from './src/context/AuthContext';
 
 export default function App() {
-	return (
-		<SafeAreaView style={styles.root}>
-			<AuthProvider>
-				<Navigation />
-			</AuthProvider>
+  return (
+    <SafeAreaView style={styles.root}>
+      <AuthProvider>
+        <Navigation/>
+      </AuthProvider>
+    <StatusBar style="auto" />
+  </SafeAreaView>
 
-			<StatusBar style="auto" />
-		</SafeAreaView>
-	);
+  );
 }
 
 const styles = StyleSheet.create({
