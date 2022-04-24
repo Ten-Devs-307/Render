@@ -17,12 +17,12 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  root: {
-    // backgroundColor: '#fff',
-    // backgroundColor: '#F8EDED',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-      flex: 1,
-      backgroundColor: '#F8EDED',
-  },
+	root: {
+		// backgroundColor: '#fff',
+		// backgroundColor: '#F8EDED',
+		// alignItems: 'center',
+		// justifyContent: 'center',
+		flex: 1,
+		backgroundColor: "#F8EDED",
+	},
 });
