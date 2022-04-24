@@ -19,16 +19,44 @@ const UserProfile = () => {
 			{/* Profile Title */}
 			<Text style={styles.profile_title}>Personal Shopper</Text>
 
+			{/* Tasks Completed and Rating */}
+			<View style={styles.tasks_complete}>
+				<Text style={{ color: "black", fontSize: 20 }}>15 Tasks Completed</Text>
+				<Text style={{ fontSize: 30, fontWeight: "bold" }}> | </Text>
+				<View style={styles.star}>
+					<FontAwesome name="star" size={24} color="black" />
+					<FontAwesome name="star" size={24} color="black" />
+					<FontAwesome name="star" size={24} color="black" />
+				</View>
+			</View>
+
 			{/* Profile Details */}
 			<View style={styles.profile_display}>
 				<View style={styles.profile_details}>
-					<AntDesign name="mail" size={25} color="black" />
-					<FontAwesome name="phone" size={25} color="black" />
-					<Entypo name="location" size={25} color="black" />
+					<AntDesign
+						style={{ marginRight: 15 }}
+						name="mail"
+						size={20}
+						color="black"
+					/>
+					<Text style={styles.profile_det}>mikeowusu@gmail.com</Text>
 				</View>
 				<View style={styles.profile_details}>
-					<Text style={styles.profile_det}>mikeowusu@gmail.com</Text>
+					<FontAwesome
+						style={{ marginRight: 15 }}
+						name="phone"
+						size={20}
+						color="black"
+					/>
 					<Text style={styles.profile_det}>0274439452</Text>
+				</View>
+				<View style={styles.profile_details}>
+					<Entypo
+						style={{ marginRight: 15 }}
+						name="location"
+						size={20}
+						color="black"
+					/>
 					<Text style={styles.profile_det}>Legon, Accra</Text>
 				</View>
 			</View>
@@ -55,27 +83,34 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 	},
 	profile_title: {
-		fontSize: 24,
+		fontSize: 20,
 		marginTop: 10,
-		marginBottom: 20,
+		marginBottom: 15,
 		fontWeight: "400",
 	},
 	profile_display: {
 		// flex: 1,
-		flexDirection: "row",
+		flexDirection: "column",
 		alignContent: "center",
 		justifyContent: "center",
 	},
 	profile_details: {
-		flexDirection: "column",
-		marginBottom: 20,
+		flexDirection: "row",
+		marginBottom: 10,
 		// alignItems: "center",
 		// justifyContent: "center",
 	},
 	profile_det: {
-		// fontSize: 22,
-		marginBottom: 15,
-		marginLeft: 15,
+		fontSize: 18,
+	},
+	tasks_complete: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+		marginBottom: 25,
+	},
+	star: {
+		flexDirection: "row",
 	},
 });
 
