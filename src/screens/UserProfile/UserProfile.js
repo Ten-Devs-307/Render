@@ -3,6 +3,7 @@ import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const profile_img =
 	"https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559_960_720.jpg";
@@ -14,7 +15,10 @@ const UserProfile = () => {
 			<Image style={styles.image} source={{ uri: profile_img }} />
 
 			{/* Profile Name */}
-			<Text style={styles.profile_name}>Mike Owusu</Text>
+			<View style={styles.prof_name_grp}>
+				<Text style={styles.profile_name}>Mike Owusu</Text>
+				<MaterialCommunityIcons name="check-decagram" size={20} color="black" />
+			</View>
 
 			{/* Profile Title */}
 			<Text style={styles.profile_title}>Personal Shopper</Text>
@@ -77,10 +81,17 @@ const styles = StyleSheet.create({
 		height: 150,
 		borderRadius: 1000,
 	},
+	prof_name_grp: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+		marginTop: 25,
+	},
 	profile_name: {
 		fontSize: 26,
-		marginTop: 20,
+		// marginTop: 20,
 		fontWeight: "bold",
+		marginRight: 5,
 	},
 	profile_title: {
 		fontSize: 20,
