@@ -35,7 +35,7 @@ const HomeScreen = () => {
 
 	const navigation = useNavigation();
 
-	const onUserPress = () => {
+	const onUserPress = () => {  
 		navigation.navigate("UserProfile");
 	};
 
@@ -64,7 +64,7 @@ const HomeScreen = () => {
 						<TextInput placeholder="Search address, City, Location, Agent name..." /> 
 					</View>
 					<View style={styles.sortButton}>
-						<Icon name='tune' size={25} color={'white'} />
+						<Icon name='tune' size={25} color={'white'}/>
 					</View>
 				</View>
 				<ListServices />

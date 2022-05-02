@@ -22,14 +22,14 @@ export default function OnBoardScreen() {
          </View>
          <View style={{marginTop:10, paddingHorizontal:20}}>
             <Text style={styles.subTitle}>
-               Explore all our services we Render
+               Get things done with Render!
             </Text>
-            <Text style={styles.subTitle}>
+            <Text style={styles.subTitle1}>
                With just a few clicks you can find the best service for you
             </Text>
          </View>
          <View style={{ flex: 1, justifyContent: 'flex-end', paddingBottom: 40 }}>
-            <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+            <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
             <View style={styles.btn}>
                <Text style={{color:'white'}}>Get Started</Text>
                </View>
@@ -67,9 +67,13 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
    },
    subTitle: {
-      fontSize: 15,
+      fontSize: 20,
       color: 'grey',
       marginBottom:5,
+   },
+   subTitle1: {
+      fontSize: 15,
+      color: 'grey',
    },
    btn: {
       backgroundColor: 'black',

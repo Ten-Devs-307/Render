@@ -38,7 +38,6 @@ const SignInScreen = () => {
 			<Text style={styles.header2}>
 				Search and book a labourer with just a click anytime and anywhere.
 			</Text>
-
 			<CustomButton text="Sign In" onPress={onSignInPress} />
 			<CustomButton text="Sign Up" onPress={onSignUpPress} />
 		</View>
