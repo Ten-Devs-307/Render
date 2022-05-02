@@ -6,13 +6,12 @@ import {
 	Image,
 	useWindowDimensions,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Logo from "../../../assets/images/Render.png";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";
-import { useContext } from "react/cjs/react.production.min";
-// import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const SignInScreen = () => {
 	const navigation = useNavigation();
@@ -28,7 +27,8 @@ const SignInScreen = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const val = useContext(AuthContext);
+//   const val = useContext(AuthContext);
+	const val = "This is a trial";
 
   return (
     <View style={styles.root}>
@@ -47,21 +47,6 @@ const SignInScreen = () => {
        <TouchableOpacity onPress={onSignUpPress} >
          <Text style={styles.text} >Don't have an account? <Text style={styles.signin}>Sign Up</Text></Text>
        </TouchableOpacity>
-
-			<Text style={styles.label}>Password</Text>
-			<CustomInput
-				placeholder=""
-				secureTextEntry={true}
-				value={password}
-				onChangeText={(text) => setPassword(text)}
-			/>
-			<CustomButton text="Sign In" onPress={onSignInPress} />
-
-			<TouchableOpacity onPress={onSignUpPress}>
-				<Text style={styles.text}>
-					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
-				</Text>
-			</TouchableOpacity>
 		</View>
 	);
 };

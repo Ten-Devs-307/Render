@@ -5,7 +5,7 @@ import CustomButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import {useNavigation} from '@react-navigation/native';
 import { AuthContext } from '../../context/AuthContext';
-
+import Spinner from 'react-native-loading-spinner-overlay';
 const SignUpScreen = () => {
   const [email, setEmail] = useState(null);
   const [password1, setPassword1] = useState(null);
@@ -13,20 +13,19 @@ const SignUpScreen = () => {
 
 
 	const onLoginPress = () => {
-		console.warn("Take me to Sign In");
 		navigation.navigate("SignIn");
 	};
 
-  const {register} = useContext(AuthContext);
-  const val = useContext(AuthContext);
+//   const {isLoading, register} = useContext(AuthContext);
+//   const val = useContext(AuthContext);
+	const val = "This is a trial";
 
   return (
     <View style={styles.root}>
-      
+      {/* <Spinner visible={isLoading}/> */}
       <Image source={Logo} style={[styles.logo]}
           resizeMode="contain" />
 
-        {/* {height: height * 0.3} */}
 
       <Text style={styles.header} >Create an account.</Text>
       <Text>{val}</Text>
@@ -42,15 +41,14 @@ const SignUpScreen = () => {
 
       <CustomButton
         text='Sign Up'
-        onPress={() => {
-        register(email, password1, password2);
-        }}/>
+        // onPress={() => {
+        // register(email, password1, password2);
+      // }}
+      />
       <Text style={styles.text} >By signing up, you agree to our Terms and Service and Privacy Policy.</Text>
-      
-
          <Text style={styles.text} >Have an account?
          <TouchableOpacity>
-           <Text style={styles.login}  onPress={onLoginPress} >  Log In</Text>
+           <Text style={styles.login}  onPress={onLoginPress} > Log In</Text>
          </TouchableOpacity>
          </Text>
 
