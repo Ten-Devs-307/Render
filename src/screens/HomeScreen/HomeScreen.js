@@ -6,6 +6,24 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const { width } = Dimensions.get('screen');
 const HomeScreen = () => {
+
+	const Card = () => {
+		return <View styles={{marginBottom:100}}>
+			<View style={styles.card}>
+				<View style={{flexDirection:'row',justifyContent:'center'}}>
+					<Image source={{ uri: profile_img }} style={styles.profileImage} />
+					<View style={{ marginLeft: 30, marginVertical: 15,}}>
+						<Text style={styles.service_name}>Cleaner</Text>
+						<Text style={styles.service_location}>Dome</Text>
+					</View>
+				</View>
+				<View>
+					<Text style={styles.service_charge}>$25/h</Text>
+				</View>
+		</View>
+		</View>;
+	};
+
 	const ListServices = () => {
 		const ServicesList = [
 			{ title: "Laundry Services" },
@@ -57,7 +75,7 @@ const HomeScreen = () => {
 					<Image source={{ uri: profile_img }} style={styles.profileImage} />
 				</Pressable>
 			</View>
-			<ScrollView>
+			<ScrollView showsVerticalScrollIndicator={false}>
 				<View style={{flexDirection:'row', justifyContent:'space-between', paddingHorizontal:20}}>
 					<View style={styles.searchInputContainer}>
 						<Icon name='search' size={25} color={'grey'}/>
@@ -68,7 +86,18 @@ const HomeScreen = () => {
 					</View>
 				</View>
 				<ListServices />
-				<ListCategories/>
+				<ListCategories />
+				<Card />
+				<Card />
+				<Card />
+				<Card />
+				<Card />
+				<Card />
+				<Card />
+				<Card />
+				<Card />
+				<View style={{marginTop:100}}>
+				</View>
 			</ScrollView>
 		</SafeAreaView>
 	);
@@ -114,50 +143,48 @@ const styles = StyleSheet.create({
 		color: 'black',
 		borderBottomWidth: 1,
 		paddingBottom: 5,
-	}
-	// agentListContainer: {
-	// 	flexDirection: 'row',
-	// 	justifyContent: 'space-between',
-	// 	marginTop: 20,
-	// 	paddingHorizontal: 20,
-	// },
-	// agentCard: {
-	// 	height: 200,
-	// 	width: width / 2 - 30,
-	// 	backgroundColor: 'white',
-	// 	alignItems: 'center', 
-	// 	borderRadius: 15,
-	// 	paddingTop: 10,
-	// 	marginBottom: 10,
-	// 	paddingHorizontal: 10,
-	// 	shadowColor: "#000",
-	// 	shadowOpacity: 0.43,
-	// 	shadowRadius: 5.51,
-	// 	elevation: 10,
-	// },
-	// agentsCardImage: {
-	// 	height: 140,
-	// 	borderRadius: 10,
-	// 	width: '100%',
-	// },
-	// card:{
-	// 	height: 250,
-	// 	backgroundColor: 'white',
-	// 	elevation: 10,
-	// 	width: width - 40,
-	// 	marginRight: 20,
-	// 	padding: 15,
-	// 	borderRadius: 20,
-	// },
-	// cardImage: {
-	// 	width: '100%',
-	// 	height: 130,
-	// 	borderRadius:15,
-	// },
-	// facility: {
-		
-	// }
-
+	},
+	card: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		height: 90,
+		backgroundColor: 'white',
+		elevation: 10,
+		width: width - 40,
+		marginLeft: 20,
+		marginTop: 10,
+		padding: 15,
+		borderRadius: 20,
+		shadowColor: "#000",
+            shadowOffset: {
+               width: 0,
+               height: 5,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.68,
+            elevation: 11,
+	},
+	cardImage: {
+		width: '100%',
+		height: 130,
+		borderRadius:15,
+	},
+	service_name: {
+		fontSize: 16,
+		fontWeight: 'bold',
+		color: 'black',
+	},
+	service_location: {
+		marginTop: 5,
+		fontSize: 14,
+		color: 'grey',
+		fontWeight:'bold',
+	},
+	service_charge:{
+		fontSize: 16,
+		fontWeight: 'bold',
+	},
 
 });
 
