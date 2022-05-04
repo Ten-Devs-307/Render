@@ -9,21 +9,24 @@ import ForgotPassword from "../screens/ForgotPassword/ForgotPassword";
 import StartUpScreen from "../screens/StartUpScreen";
 import UserProfile from "../screens/UserProfile/UserProfile";
 import HomeScreen from "../screens/HomeScreen";
-import JobDetails from "../screens/JobDetails"
+import JobDetails from "../screens/JobDetails";
 
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
 	return (
 		<NavigationContainer>
-			<Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={JobDetails }>
-				{/*<Stack.Screen name="OnBoardScreen" component={OnBoardScreen} />
+			<Stack.Navigator
+				screenOptions={{ headerShown: true }}
+				// initialRouteName={JobDetails}
+			>
+				<Stack.Screen name="OnBoardScreen" component={OnBoardScreen} />
 				<Stack.Screen name="StartUp" component={StartUpScreen} />
 				<Stack.Screen name="SignIn" component={SignInScreen} />
 				<Stack.Screen name="ForgotPassword" component={ForgotPassword} />
 				<Stack.Screen name="SignUp" component={SignUpScreen} />
 				<Stack.Screen name="HomeScreen" component={HomeScreen} />
-				<Stack.Screen name="UserProfile" component={UserProfile} /> */}
+				<Stack.Screen name="UserProfile" component={UserProfile} />
 				<Stack.Screen name="JobDetails" component={JobDetails} />
 			</Stack.Navigator>
 		</NavigationContainer>
