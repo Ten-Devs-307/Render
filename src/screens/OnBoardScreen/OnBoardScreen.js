@@ -9,7 +9,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
-import { COLORS, SIZES } from "../../components/constants/theme";
+import { COLORS, SIZES } from "../../constants/theme";
 import StartUpScreen from "../StartUpScreen";
 
 const slides = [

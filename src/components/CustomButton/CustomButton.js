@@ -6,6 +6,7 @@ import {
 	Pressable,
 	TouchableOpacity,
 } from "react-native";
+import { COLORS } from "../../constants/theme";
 // import { TouchableOpacity } from 'react-native-web';
 
 const CustomButton = ({
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
 	},
 
 	container_PRIMARY: {
-		backgroundColor: "#000",
+		backgroundColor: COLORS.primary,
 		borderRadius: 15,
 	},
 
@@ -63,8 +64,7 @@ const styles = StyleSheet.create({
 
 	text: {
 		fontWeight: "bold",
-		color: "white",
-		
+		color: COLORS.secondary,
 	},
 
 	text_SECONDARY: {

@@ -11,6 +11,7 @@ import Logo from "../../../assets/images/get-things-done.png";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";
+import { COLORS, SIZES } from "../../constants/theme";
 
 // const {height} = useWindowDimensions();
 
@@ -33,9 +34,9 @@ const SignInScreen = () => {
 
 			{/* {height: height * 0.3} */}
 
-			<Text style={styles.header}>Get things done with Render!</Text>
-			<Text style={styles.header1}>Easy, Convenient and Affordable</Text>
-			<Text style={styles.header2}>
+			<Text style={styles.header1}>Get things done with Render!</Text>
+			<Text style={styles.header2}>Easy, Convenient and Affordable</Text>
+			<Text style={styles.desc}>
 				Search and book a labourer with just a click anytime and anywhere.
 			</Text>
 			<CustomButton text="Sign In" onPress={onSignInPress} />
@@ -65,21 +66,22 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		marginBottom: 30,
 	},
-	header: {
-		fontSize: 26,
+	header1: {
+		fontSize: SIZES.h1,
 		marginBottom: 10,
 		fontWeight: "700",
 		alignSelf: "center",
+		color: COLORS.primary,
 	},
-	header1: {
-		fontSize: 20,
+	header2: {
+		fontSize: SIZES.h3,
 		padding: 10,
 		fontWeight: "500",
 		textAlign: "center",
 		color: "#000",
 	},
-	header2: {
-		fontSize: 16,
+	desc: {
+		fontSize: SIZES.h4,
 		padding: 10,
 		textAlign: "center",
 		color: "#000",

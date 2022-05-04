@@ -16,37 +16,45 @@ import { AuthContext } from "../../context/AuthContext";
 const SignInScreen = () => {
 	const navigation = useNavigation();
 
-
-	const onSignUpPress = () => {
-		navigation.navigate("SignUp");
+	const onSignInPress = () => {
+		navigation.navigate("HomeScreen");
 	};
 
-  const onSignInPress = () => {
-    navigation.navigate('StartUp');
-  };
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+	const onSignUpPress = () => {
+		navigation.navigate("StartUp");
+	};
+	const [email, setEmail] = useState(null);
+	const [password, setPassword] = useState(null);
 
-//   const val = useContext(AuthContext);
+	//   const val = useContext(AuthContext);
 	const val = "This is a trial";
 
-  return (
-    <View style={styles.root}>
-      
-      <Image source={Logo} style={[styles.logo]}
-          resizeMode="contain" />
-      <Text style={styles.header} >Welcome back!</Text>
-      <Text>{val}</Text>
-      <Text style={styles.label} >Email</Text>
-      <CustomInput placeholder='' onChangeText={text => setEmail(text)} value={email}/>
+	return (
+		<View style={styles.root}>
+			<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
+			<Text style={styles.header}>Welcome back!</Text>
+			<Text>{val}</Text>
+			<Text style={styles.label}>Email</Text>
+			<CustomInput
+				placeholder=""
+				onChangeText={(text) => setEmail(text)}
+				value={email}
+			/>
 
-      <Text style={styles.label} >Password</Text>
-      <CustomInput placeholder='' secureTextEntry={true} onChangeText={text => setPassword(text)} value={password}/>
-      <CustomButton text='Sign In' onPress={onSignInPress} />
-       
-       <TouchableOpacity onPress={onSignUpPress} >
-         <Text style={styles.text} >Don't have an account? <Text style={styles.signin}>Sign Up</Text></Text>
-       </TouchableOpacity>
+			<Text style={styles.label}>Password</Text>
+			<CustomInput
+				placeholder=""
+				secureTextEntry={true}
+				onChangeText={(text) => setPassword(text)}
+				value={password}
+			/>
+			<CustomButton text="Sign In" onPress={onSignInPress} />
+
+			<TouchableOpacity onPress={onSignUpPress}>
+				<Text style={styles.text}>
+					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
+				</Text>
+			</TouchableOpacity>
 		</View>
 	);
 };
