@@ -10,48 +10,53 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { COLORS, SIZES } from "../../constants/theme";
-import StartUpScreen from "../StartUpScreen";
 import { useFonts } from "expo-font";
+import * as Font from "expo-font";
+import StartUpScreen from "../StartUpScreen";
 
 const slides = [
 	{
 		id: 1,
-		title: "Discover best places",
+		title: "Platform For Job Seekers And Hirers",
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
-		image: require("../../../assets/images/slides/open1.png"),
+			"Your one stop platform to explore available jobs or find a perfect candidate for a task.",
+		image: require("../../../assets/images/slides/onboard1.png"),
 	},
 	{
 		id: 2,
-		title: "Choose from places",
+		title: "Available Jobs Near You",
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
-		image: require("../../../assets/images/slides/open2.png"),
+			"Filter your search according to your preference to discover available jobs near you.",
+		image: require("../../../assets/images/slides/onboard2.png"),
 	},
 	{
 		id: 3,
-		title: "Find best places",
+		title: "Post Jobs",
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
-		image: require("../../../assets/images/slides/open3.png"),
+			"Upload and broadcast jobs to millions of labourers on our platform with just a single click.",
+		image: require("../../../assets/images/slides/onboard3.png"),
 	},
 	{
 		id: 4,
-		title: "Go best places",
+		title: "Receive Payment",
 		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
-		image: require("../../../assets/images/slides/open3.png"),
+			"Receive payments and cashout anytime anywhere from your online wallet after completing a job",
+		image: require("../../../assets/images/slides/onboard4.png"),
 	},
 ];
 
 const OnBoardScreen = () => {
+	const [loaded] = useFonts({
+		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
+		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
+		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
+		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
+		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
+	});
+
 	const [showHomePage, setShowHomePage] = useState(false);
 
 	const navigation = useNavigation();
-
-	const [loaded] = useFonts({
-		Poppins: require("../../../assets/fonts/little-sunshine.ttf"),
-	});
 
 	const onDone = () => {
 		// console.warn("Sign Up");
@@ -117,14 +122,17 @@ const styles = StyleSheet.create({
 	},
 	head: {
 		fontSize: SIZES.h1,
-		color: COLORS.title,
-		fontWeight: "bold",
-		fontFamily: "Poppins",
-		marginBottom: 10,
+		color: COLORS.primary,
+		// fontWeight: "bold",
+		fontFamily: "Poppins_bold",
+		// marginBottom: 5,
+		textAlign: "center",
+		padding: 5,
 	},
 	desc: {
 		fontSize: SIZES.h4,
 		color: COLORS.title,
+		fontFamily: "Poppins_light",
 		textAlign: "center",
 		padding: 5,
 	},
@@ -133,8 +141,9 @@ const styles = StyleSheet.create({
 	},
 	buttonlabel: {
 		color: COLORS.title,
-		fontWeight: "700",
+		// fontWeight: "700",
 		fontSize: SIZES.h3,
+		fontFamily: "Poppins_regular",
 	},
 });
 

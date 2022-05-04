@@ -10,6 +10,7 @@ import StartUpScreen from "../screens/StartUpScreen";
 import UserProfile from "../screens/UserProfile/UserProfile";
 import HomeScreen from "../screens/HomeScreen";
 import JobDetails from "../screens/JobDetails";
+import SplashScreen from "../screens/SplashScreen/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,8 @@ const Navigation = () => {
 				screenOptions={{ headerShown: true }}
 				// initialRouteName={JobDetails}
 			>
-				<Stack.Screen name="OnBoardScreen" component={OnBoardScreen} />
+				{/* <Stack.Screen name="Splash" component={SplashScreen} /> */}
+				<Stack.Screen name="OnBoard" component={OnBoardScreen} />
 				<Stack.Screen name="StartUp" component={StartUpScreen} />
 				<Stack.Screen name="SignIn" component={SignInScreen} />
 				<Stack.Screen name="SignUp" component={SignUpScreen} />

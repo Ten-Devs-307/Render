@@ -2786,7 +2786,7 @@
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.9.tgz"
   "version" "1.14.9"
 
-"fontfaceobserver@^2.1.0":
+"fontfaceobserver@^2.0.13", "fontfaceobserver@^2.1.0":
   "integrity" "sha512-ReOsO2F66jUa0jmv2nlM/s1MiutJx/srhAe2+TE8dJCMi02ZZOcCTxTCQFr3Yet+uODUtnr4Mewg+tNQ+4V1Ng=="
   "resolved" "https://registry.npmjs.org/fontfaceobserver/-/fontfaceobserver-2.1.0.tgz"
   "version" "2.1.0"
@@ -2991,7 +2991,7 @@
   dependencies:
     "source-map" "^0.7.3"
 
-"hoist-non-react-statics@^3.3.0":
+"hoist-non-react-statics@^3.0.1", "hoist-non-react-statics@^3.3.0":
   "integrity" "sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw=="
   "resolved" "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz"
   "version" "3.3.2"
@@ -4289,6 +4289,11 @@
   "resolved" "https://registry.npmjs.org/os-tmpdir/-/os-tmpdir-1.0.2.tgz"
   "version" "1.0.2"
 
+"p-cancelable@^0.5.0":
+  "integrity" "sha512-vkOBXQgQb03QTOoMeeB5/uS2W3iafXzQLaIh7ChHjEb8DDT06sWJizhdOACL1Sittl5dFqsyumJ4rD1WUF8Isw=="
+  "resolved" "https://registry.npmjs.org/p-cancelable/-/p-cancelable-0.5.1.tgz"
+  "version" "0.5.1"
+
 "p-finally@^1.0.0":
   "integrity" "sha1-P7z7FbiZpEEjs0ttzBi3JDNqLK4="
   "resolved" "https://registry.npmjs.org/p-finally/-/p-finally-1.0.0.tgz"
@@ -4523,7 +4528,7 @@
     "shell-quote" "^1.6.1"
     "ws" "^7"
 
-"react-dom@>=17.0.1", "react-dom@17.0.1":
+"react-dom@>=15", "react-dom@>=17.0.1", "react-dom@17.0.1":
   "integrity" "sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.1.tgz"
   "version" "17.0.1"
@@ -4661,7 +4666,17 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.4.3.tgz"
   "version" "0.4.3"
 
-"react@*", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@>=17.0.1", "react@17.0.1":
+"react-with-async-fonts@^4.0.3":
+  "integrity" "sha512-e6z/p2haTkOSOuDBZO0snc3QcDaHgJSk+8JajEXtW/GpIhscEqxQCfVKU8FXSG9ltEc6lbvsl1K03he3zKNL7A=="
+  "resolved" "https://registry.npmjs.org/react-with-async-fonts/-/react-with-async-fonts-4.0.3.tgz"
+  "version" "4.0.3"
+  dependencies:
+    "fontfaceobserver" "^2.0.13"
+    "hoist-non-react-statics" "^3.0.1"
+    "invariant" "^2.2.4"
+    "p-cancelable" "^0.5.0"
+
+"react@*", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@>=15", "react@>=17.0.1", "react@17.0.1":
   "integrity" "sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.1.tgz"
   "version" "17.0.1"
