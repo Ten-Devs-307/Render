@@ -6,7 +6,7 @@ import {
 	Pressable,
 	TouchableOpacity,
 } from "react-native";
-import { COLORS } from "../../constants/theme";
+import { COLORS, SIZES } from "../../constants/theme";
 // import { TouchableOpacity } from 'react-native-web';
 
 const CustomButton = ({
@@ -40,10 +40,10 @@ const CustomButton = ({
 
 const styles = StyleSheet.create({
 	container: {
-		width: "100%",
-		padding: 20,
+		// width: "10%",
+		paddingVertical: 10,
+		paddingHorizontal: 5,
 		marginVertical: 5,
-		alignItems: "center",
 		borderRadius: 1,
 	},
 
@@ -63,8 +63,11 @@ const styles = StyleSheet.create({
 	},
 
 	text: {
-		fontWeight: "bold",
+		// fontWeight: "bold",
+		fontSize: SIZES.h4,
 		color: COLORS.secondary,
+		fontFamily: "Poppins_bold",
+		textAlign: "center",
 	},
 
 	text_SECONDARY: {

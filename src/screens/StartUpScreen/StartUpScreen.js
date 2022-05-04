@@ -12,11 +12,20 @@ import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS, SIZES } from "../../constants/theme";
+import { useFonts } from "expo-font";
 
 // const {height} = useWindowDimensions();
 
 const SignInScreen = () => {
 	const navigation = useNavigation();
+
+	const [loaded] = useFonts({
+		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
+		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
+		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
+		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
+		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
+	});
 
 	const onSignUpPress = () => {
 		// console.warn("Sign Up");
@@ -39,7 +48,7 @@ const SignInScreen = () => {
 			<Text style={styles.desc}>
 				Search and book a labourer with just a click anytime and anywhere.
 			</Text>
-			<CustomButton text="Sign In" onPress={onSignInPress} />
+			<CustomButton text="Log In" onPress={onSignInPress} />
 			<CustomButton text="Sign Up" onPress={onSignUpPress} />
 		</View>
 	);
@@ -52,9 +61,20 @@ const styles = StyleSheet.create({
 		flex: 1,
 		padding: 20,
 	},
-	label: {
-		// alignItems: '',
-		fontSize: 18,
+	header1: {
+		fontSize: SIZES.h1,
+		marginBottom: 5,
+		// fontWeight: "700",
+		fontFamily: "Poppins_bold",
+		alignSelf: "center",
+		color: COLORS.primary,
+	},
+	header2: {
+		fontSize: SIZES.h3,
+		// fontWeight: "500",
+		fontFamily: "Poppins_regular",
+		textAlign: "center",
+		color: "#000",
 	},
 	signin: {
 		fontWeight: "bold",
@@ -66,24 +86,11 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		marginBottom: 30,
 	},
-	header1: {
-		fontSize: SIZES.h1,
-		marginBottom: 10,
-		fontWeight: "700",
-		alignSelf: "center",
-		color: COLORS.primary,
-	},
-	header2: {
-		fontSize: SIZES.h3,
-		padding: 10,
-		fontWeight: "500",
-		textAlign: "center",
-		color: "#000",
-	},
 	desc: {
 		fontSize: SIZES.h4,
 		padding: 10,
 		textAlign: "center",
+		fontFamily: "Poppins_light",
 		color: "#000",
 	},
 });

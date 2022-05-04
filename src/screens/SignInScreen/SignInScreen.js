@@ -12,8 +12,18 @@ import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../context/AuthContext";
+import { SIZES, COLORS } from "../../constants/theme";
+import { useFonts } from "expo-font";
 
 const SignInScreen = () => {
+	const [loaded] = useFonts({
+		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
+		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
+		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
+		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
+		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
+	});
+
 	const navigation = useNavigation();
 
 	const onSignInPress = () => {
@@ -21,7 +31,7 @@ const SignInScreen = () => {
 	};
 
 	const onSignUpPress = () => {
-		navigation.navigate("StartUp");
+		navigation.navigate("SignUp");
 	};
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
@@ -68,10 +78,12 @@ const styles = StyleSheet.create({
 	},
 	label: {
 		// alignItems: '',
-		fontSize: 18,
+		fontSize: SIZES.h3,
+		fontFamily: "Poppins_regular",
 	},
 	text: {
-		fontSize: 16,
+		fontSize: SIZES.h4,
+		fontFamily: "Poppins_regular",
 		paddingTop: 20,
 		alignSelf: "center",
 		color: "#000",
@@ -87,9 +99,11 @@ const styles = StyleSheet.create({
 		marginBottom: 30,
 	},
 	header: {
-		fontSize: 26,
+		fontSize: SIZES.h1,
 		marginBottom: 30,
-		fontWeight: "700",
+		fontFamily: "Poppins_bold",
+		color: COLORS.primary,
+		// fontWeight: "700",
 		// alignSelf: 'center'
 	},
 });
