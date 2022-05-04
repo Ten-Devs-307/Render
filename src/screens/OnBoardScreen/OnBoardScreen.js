@@ -11,6 +11,8 @@ import React, { useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { COLORS, SIZES } from "../../constants/theme";
 import StartUpScreen from "../StartUpScreen";
+import { useFonts } from 'expo-font';
+
 
 const slides = [
 	{
@@ -34,6 +36,12 @@ const slides = [
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
 		image: require("../../../assets/images/slides/open3.png"),
 	},
+	id: 4,
+		title: "Go best places",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,",
+		image: require("../../../assets/images/slides/open3.png"),
+	}
 ];
 
 const OnBoardScreen = () => {
@@ -75,6 +83,7 @@ const OnBoardScreen = () => {
 				showSkipButton
 				renderNextButton={() => buttonLabel("Next")}
 				renderSkipButton={() => buttonLabel("Skip")}
+				renderSkipButton={() => buttonLabel("Skip")}
 				renderDoneButton={() => buttonLabel("Done")}
 				onDone={onDone}
 			/>
@@ -106,6 +115,7 @@ const styles = StyleSheet.create({
 		fontSize: SIZES.h1,
 		color: COLORS.title,
 		fontWeight: "bold",
+		fontFamily: "little-sunshine",
 		marginBottom: 10,
 	},
 	desc: {
