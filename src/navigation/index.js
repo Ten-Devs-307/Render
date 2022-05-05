@@ -19,7 +19,7 @@ const Navigation = () => {
 		<NavigationContainer>
 			<Stack.Navigator
 				screenOptions={{ headerShown: false }}
-				initialRouteName={OnBoardScreen}
+				// initialRouteName={OnBoardScreen}
 			>
 				{/* <Stack.Screen name="Splash" component={SplashScreen} /> */}
 				<Stack.Screen name="OnBoard" component={OnBoardScreen} />
