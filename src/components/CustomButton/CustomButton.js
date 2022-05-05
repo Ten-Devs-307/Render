@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 	},
 
 	container_PRIMARY: {
-		backgroundColor: COLORS.primary,
+		backgroundColor: "rgba(0,0,255,0.8)",
 		borderRadius: 15,
 	},
 

@@ -7,7 +7,7 @@ import {
 	useWindowDimensions,
 } from "react-native";
 import React, { useState, useContext } from "react";
-import Logo from "../../../assets/images/Render.png";
+import Logo from "../../../assets/images/render.png";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";
@@ -30,8 +30,8 @@ const SignInScreen = () => {
 		navigation.navigate("HomeScreen");
 	};
 
-	const onSignUpPress = () => {
-		navigation.navigate("SignUp");
+	const onHomeScreenPress = () => {
+		navigation.navigate("HomeScreen");
 	};
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
@@ -60,11 +60,13 @@ const SignInScreen = () => {
 			/>
 			<CustomButton text="Sign In" onPress={onSignInPress} />
 
-			<TouchableOpacity onPress={onSignUpPress}>
-				<Text style={styles.text}>
-					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
-				</Text>
-			</TouchableOpacity>
+      <Text style={styles.label} >Password</Text>
+      <CustomInput placeholder='' secureTextEntry={true} onChangeText={text => setPassword(text)} value={password}/>
+      <CustomButton text='Sign In'/>
+       
+       <TouchableOpacity onPress={onSignUpPress} >
+         <Text style={styles.text} >Don't have an account? <Text style={styles.signin}>Sign Up</Text></Text>
+       </TouchableOpacity>
 		</View>
 	);
 };
