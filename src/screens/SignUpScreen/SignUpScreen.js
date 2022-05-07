@@ -4,10 +4,9 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 	Image,
-	useWindowDimensions,
 } from "react-native";
 import React, { useContext, useState } from "react";
-import Logo from "../../../assets/images/Render.png";
+import Logo from "../../../assets/images/render.png";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";
@@ -16,9 +15,10 @@ import Spinner from "react-native-loading-spinner-overlay";
 import { COLORS } from "../../constants/theme";
 import { Touchable } from "react-native-web";
 const SignUpScreen = () => {
+	// const [email, setEmail] = useState(null);
 	const [email, setEmail] = useState(null);
-	const [password1, setPassword1] = useState(null);
-	const [password2, setPassword2] = useState(null);
+	const [password, setPassword] = useState(null);
+	const [name, setName] = useState(null);
 
 	const navigation = useNavigation();
 
@@ -27,8 +27,9 @@ const SignUpScreen = () => {
 	};
 
 	//   const {isLoading, register} = useContext(AuthContext);
-	//   const val = useContext(AuthContext);
+	const {register} = useContext(AuthContext);
 	const val = "This is a trial";
+	
 
 	return (
 		<View style={styles.root}>
@@ -43,32 +44,38 @@ const SignUpScreen = () => {
 				value={email}
 				onChangeText={(text) => setEmail(text)}
 			/>
+			
+			<Text style={styles.label}>Name</Text>
+			<CustomInput
+				placeholder=""
+				value={name}
+				onChangeText={(text) => setName(text)}
+			/>
 
 			<Text style={styles.label}>Password</Text>
 			<CustomInput
 				placeholder=""
 				secureTextEntry={true}
-				value={password1}
-				onChangeText={(text) => setPassword1(text)}
+				value={password}
+				onChangeText={(text) => setPassword(text)}
 			/>
 
-			<Text style={styles.label}>Re-enter Password</Text>
+			{/* <Text style={styles.label}>Re-enter Password</Text>
 			<CustomInput
 				placeholder=""
 				secureTextEntry={true}
 				value={password2}
 				onChangeText={(text) => setPassword2(text)}
-			/>
-
-			<CustomButton
-				text="Sign Up"
-				// onPress={() => {
-				// register(email, password1, password2);
-				// }}
-			/>
+			/> */}
 			<Text style={styles.text}>
 				By signing up, you agree to our Terms and Service and Privacy Policy.
 			</Text>
+			<CustomButton
+				text="Sign Up"
+				onPress={() => {
+				register(email, name, password);
+				}}
+			/>
 			<TouchableOpacity>
 				<Text style={styles.text} onPress={onLoginPress}>
 					Have an account? Log In{" "}
@@ -84,6 +91,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		flex: 1,
 		padding: 20,
+		marginBottom: 70,
 	},
 	label: {
 		// alignItems: '',
@@ -104,11 +112,10 @@ const styles = StyleSheet.create({
 		maxWidth: 300,
 		maxHeight: 200,
 		alignSelf: "center",
-		marginBottom: 30,
 	},
 	header: {
 		fontSize: 26,
-		marginBottom: 50,
+		marginBottom: 10,
 		fontWeight: "700",
 		// alignSelf: 'center'
 	},

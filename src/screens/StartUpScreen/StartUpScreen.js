@@ -40,9 +40,6 @@ const SignInScreen = () => {
 	return (
 		<View style={styles.root}>
 			<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
-
-			{/* {height: height * 0.3} */}
-
 			<Text style={styles.header1}>Get things done with Render!</Text>
 			<Text style={styles.header2}>Easy, Convenient and Affordable</Text>
 			<Text style={styles.desc}>
@@ -60,6 +57,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		flex: 1,
 		padding: 20,
+		
 	},
 	header1: {
 		fontSize: SIZES.h1,
