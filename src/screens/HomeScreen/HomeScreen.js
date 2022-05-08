@@ -67,7 +67,7 @@ const HomeScreen = () => {
 					<Text style={{color:'grey'}}>
 						Location
 					</Text>
-					<Text style={{ color: 'dark', fontSize:20, fontWeight:'bold'}}>
+					<Text style={{ color: '#000', fontSize:20, fontWeight:'bold'}}>
 						Accra
 					</Text>
 				</View>

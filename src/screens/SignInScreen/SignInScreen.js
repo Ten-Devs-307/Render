@@ -32,7 +32,6 @@ const SignInScreen = () => {
 	};
 
 	const onSignUpPress = () => {
-		// console.warn("Sign Up");
 		navigation.navigate("SignUp");
 	};
 	const [email, setEmail] = useState(null);
@@ -40,6 +39,8 @@ const SignInScreen = () => {
 
 	const {login} = useContext(AuthContext);
 	const val = "This is a trial";
+
+	
 
 	return (
 		<View style={styles.root}>
@@ -62,7 +63,9 @@ const SignInScreen = () => {
 			/>
 			<CustomButton text="Sign In" onPress={onSignInPress} /> 
        <TouchableOpacity onPress={onSignUpPress} >
-         <Text style={styles.text} >Don't have an account? <Text style={styles.signin}>Sign Up</Text></Text>
+				<Text style={styles.text} >Don't have an account?
+					<Text style={styles.signin}>Sign Up</Text>
+				</Text>
        </TouchableOpacity>
 		</View>
 	);
