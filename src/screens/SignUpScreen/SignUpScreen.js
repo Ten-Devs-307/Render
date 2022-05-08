@@ -7,7 +7,7 @@ import {
 	useWindowDimensions,
 } from "react-native";
 import React, { useContext, useState } from "react";
-import Logo from "../../../assets/images/Render.png";
+import Logo from "../../../assets/images/render.png";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";

@@ -60,13 +60,20 @@ const SignInScreen = () => {
 			/>
 			<CustomButton text="Sign In" onPress={onSignInPress} />
 
-      <Text style={styles.label} >Password</Text>
-      <CustomInput placeholder='' secureTextEntry={true} onChangeText={text => setPassword(text)} value={password}/>
-      <CustomButton text='Sign In'/>
-       
-       <TouchableOpacity onPress={onSignUpPress} >
-         <Text style={styles.text} >Don't have an account? <Text style={styles.signin}>Sign Up</Text></Text>
-       </TouchableOpacity>
+			<Text style={styles.label}>Password</Text>
+			<CustomInput
+				placeholder=""
+				secureTextEntry={true}
+				onChangeText={(text) => setPassword(text)}
+				value={password}
+			/>
+			<CustomButton text="Sign In" />
+
+			<TouchableOpacity onPress={onSignUpPress}>
+				<Text style={styles.text}>
+					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
+				</Text>
+			</TouchableOpacity>
 		</View>
 	);
 };
