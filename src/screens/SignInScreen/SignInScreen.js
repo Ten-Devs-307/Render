@@ -27,16 +27,18 @@ const SignInScreen = () => {
 	const navigation = useNavigation();
 
 	const onSignInPress = () => {
+		login(email, password);
 		navigation.navigate("HomeScreen");
 	};
 
-	const onHomeScreenPress = () => {
-		navigation.navigate("HomeScreen");
+	const onSignUpPress = () => {
+		// console.warn("Sign Up");
+		navigation.navigate("SignUp");
 	};
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
 
-	//   const val = useContext(AuthContext);
+	const { login } = useContext(AuthContext);
 	const val = "This is a trial";
 
 	return (
@@ -69,6 +71,12 @@ const SignInScreen = () => {
 			/>
 			<CustomButton text="Sign In" />
 
+			<TouchableOpacity onPress={onSignUpPress}>
+				<Text style={styles.text}>
+					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
+				</Text>
+			</TouchableOpacity>
+			<CustomButton text="Sign In" onPress={onSignInPress} />
 			<TouchableOpacity onPress={onSignUpPress}>
 				<Text style={styles.text}>
 					Don't have an account? <Text style={styles.signin}>Sign Up</Text>

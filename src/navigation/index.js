@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SignInScreen from "../screens/SignInScreen";
+import SignInScreen from "../screens/SignInScreen/SignInScreen";
 import SignUpScreen from "../screens/SignUpScreen/SignUpScreen";
 import OnBoardScreen from "../screens/OnBoardScreen/OnBoardScreen";
 import ForgotPassword from "../screens/ForgotPassword/ForgotPassword";

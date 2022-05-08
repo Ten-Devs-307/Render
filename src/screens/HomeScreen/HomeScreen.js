@@ -72,7 +72,8 @@ const HomeScreen = () => {
 					</Text>
 				</View>
 				<Pressable onPress={onUserPress}>
-					<Image source={{ uri: profile_img }} style={styles.profileImage} />
+					{/* <Image source={{ uri: profile_img }} style={styles.profileImage} /> */}
+					<Icon name='menu' size={35} color={'grey'}/>
 				</Pressable>
 			</View>
 			<ScrollView showsVerticalScrollIndicator={false}>
