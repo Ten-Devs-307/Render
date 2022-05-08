@@ -19,11 +19,11 @@ import { Touchable } from "react-native-web";
 const baseUrl = "http://www.renderjobs.com/api";
 
 const SignUpScreen = () => {
-	// const [email, setEmail] = useState(null);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [name, setName] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
+	
 
 
 	const onChangeEmailHandler = (email) => {
@@ -46,7 +46,6 @@ const SignUpScreen = () => {
 		register(email,name, password);
 		navigation.navigate("SignUp");
 	};
-	//   const {isLoading, register} = useContext(AuthContext);
 	const {register} = useContext(AuthContext);
 	const val = "This is a trial";
 

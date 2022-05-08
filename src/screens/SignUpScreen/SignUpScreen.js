@@ -10,6 +10,8 @@ import {
   TextInput,
 } from "react-native";
 import Constants from "expo-constants";
+import { useNavigation } from "@react-navigation/native";
+
 
 const baseUrl = "http://www.renderjobs.com/api";
 
@@ -18,6 +20,8 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigation = useNavigation();
 
   const onChangeNameHandler = (name) => {
     setName(name);
@@ -32,7 +36,7 @@ export default function App() {
 
   const onSubmitFormHandler = async (event) => {
     if (!name.trim() || !email.trim() || !password.trim()) {
-      alert("Name or Email is invalid");
+      alert("Name or Email or password is invalid");
       return;
     }
     setIsLoading(true);
@@ -44,13 +48,13 @@ export default function App() {
 		},
 		{headers: {'Content-Type': 'application/json'}}
 		 );
-		 alert(response.status);
       if (response.status === 200 || response.status === 201) {
-        alert(` You have created: ${JSON.stringify(response.data)}`);
+        alert('Your account has been created successfully');
         setIsLoading(false);
         setName('');
         setEmail('');
         setPassword('');
+        navigation.navigate("SignIn");
       } else {
         throw new Error(response.status);
       }
@@ -98,12 +102,13 @@ export default function App() {
             style={styles.input}
             value={password}
             editable={!isLoading}
+            secureTextEntry={true}
             onChangeText={onChangePasswordHandler}
           />
         </View>
         <View>
           <Button
-            title="Submit"
+            title="Register"
             onPress={onSubmitFormHandler}
             style={styles.submitButton}
             disabled={isLoading}

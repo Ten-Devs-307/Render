@@ -10,7 +10,7 @@ const CustomInput = ({ value, setValue, placeholder,secureTextEntry, editable}) 
             placeholder= {placeholder} 
             style={styles.input}
 				secureTextEntry={secureTextEntry}
-				editable={tue}
+				editable={true}
              />
 		</View>
 	);
