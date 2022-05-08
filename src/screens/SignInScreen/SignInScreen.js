@@ -1,113 +1,133 @@
+import axios from "axios";
+import React, { useState } from "react";
 import {
-	View,
-	Text,
 	StyleSheet,
-	TouchableOpacity,
-	Image,
-	useWindowDimensions,
+	Text,
+	ScrollView,
+	View,
+	Button,
+	Platform,
+	TextInput,
 } from "react-native";
-import React, { useState, useContext } from "react";
-import Logo from "../../../assets/images/render.png";
-import CustomButton from "../../components/CustomButton";
-import CustomInput from "../../components/CustomInput";
+import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
-import { AuthContext } from "../../context/AuthContext";
-import { SIZES, COLORS } from "../../constants/theme";
-import { useFonts } from "expo-font";
 
-const SignInScreen = () => {
-	const [loaded] = useFonts({
-		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
-		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
-		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
-		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
-		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
-	});
+const baseUrl = "http://www.renderjobs.com/api";
+
+export default function App() {
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	const navigation = useNavigation();
 
-	const onSignInPress = () => {
-		login(email, password);
-		navigation.navigate("HomeScreen");
+	const onChangeEmailHandler = (email) => {
+		setEmail(email);
+	};
+	const onChangePasswordHandler = (password) => {
+		setPassword(password);
 	};
 
-	const onSignUpPress = () => {
-		// console.warn("Sign Up");
-		navigation.navigate("SignUp");
+	const onSubmitFormHandler = async (event) => {
+		if (!email.trim() || !password.trim()) {
+			alert("Name or Email is invalid");
+			return;
+		}
+		setIsLoading(true);
+		try {
+			const response = await axios.post(
+				`${baseUrl}/login/`,
+				{
+					email,
+					password,
+				},
+				{ headers: { "Content-Type": "application/json" } }
+			);
+			if (response.status === 200 || response.status === 201) {
+				alert("Logged in Successfully");
+				setIsLoading(false);
+				setEmail("");
+				setPassword("");
+				navigation.navigate("HomeScreen");
+			} else {
+				throw new Error(response.status);
+			}
+		} catch (error) {
+			alert("Login failed");
+			setIsLoading(false);
+		}
 	};
-	const [email, setEmail] = useState(null);
-	const [password, setPassword] = useState(null);
-
-	const { login } = useContext(AuthContext);
-	const val = "This is a trial";
 
 	return (
-		<View style={styles.root}>
-			<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
-			<Text style={styles.header}>Welcome back!</Text>
-			<Text>{val}</Text>
-			<Text style={styles.label}>Email</Text>
-			<CustomInput
-				placeholder=""
-				onChangeText={(text) => setEmail(text)}
-				value={email}
-			/>
-
-			<Text style={styles.label}>Password</Text>
-			<CustomInput
-				placeholder=""
-				secureTextEntry={true}
-				onChangeText={(text) => setPassword(text)}
-				value={password}
-			/>
-
-			<CustomButton text="Sign In" onPress={onSignInPress} />
-			<TouchableOpacity onPress={onSignUpPress}>
-				<Text style={styles.text}>
-					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
-				</Text>
-			</TouchableOpacity>
-		</View>
+		<ScrollView contentContainerStyle={styles.container}>
+			<View>
+				<View style={styles.wrapper}>
+					{isLoading ? (
+						<Text style={styles.formHeading}> Logging in User </Text>
+					) : (
+						<Text style={styles.formHeading}>Login user</Text>
+					)}
+				</View>
+				<View style={styles.wrapper}>
+					<TextInput
+						placeholder="Email"
+						placeholderTextColor="#ffffff"
+						style={styles.input}
+						value={email}
+						editable={!isLoading}
+						onChangeText={onChangeEmailHandler}
+					/>
+				</View>
+				<View style={styles.wrapper}>
+					<TextInput
+						placeholder="Password"
+						placeholderTextColor="#ffffff"
+						style={styles.input}
+						value={password}
+						editable={!isLoading}
+						secureTextEntry={true}
+						onChangeText={onChangePasswordHandler}
+					/>
+				</View>
+				<View>
+					<Button
+						title="Login"
+						onPress={onSubmitFormHandler}
+						style={styles.submitButton}
+						disabled={isLoading}
+					/>
+				</View>
+			</View>
+		</ScrollView>
 	);
-};
+}
 
 const styles = StyleSheet.create({
-	root: {
-		// alignItems: 'center',
-		justifyContent: "center",
+	container: {
 		flex: 1,
-		paddingHorizontal: 20,
+		backgroundColor: "#252526",
+		alignItems: "center",
+		justifyContent: "center",
+		marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
 	},
-	label: {
-		// alignItems: '',
-		fontSize: SIZES.h3,
-		fontFamily: "Poppins_regular",
+	formHeading: {
+		color: "#ffffff",
 	},
-	text: {
-		fontSize: SIZES.h4,
-		fontFamily: "Poppins_regular",
-		paddingTop: 20,
-		alignSelf: "center",
-		color: "#000",
+	wrapper: {
+		marginBottom: 10,
 	},
-	signin: {
-		fontWeight: "bold",
+	input: {
+		borderWidth: 2,
+		borderColor: "grey",
+		minWidth: 200,
+		textAlignVertical: "center",
+		paddingLeft: 10,
+		borderRadius: 20,
+		color: "#ffffff",
 	},
-	logo: {
-		width: "80%",
-		maxWidth: 300,
-		maxHeight: 200,
-		alignSelf: "center",
-		marginBottom: 30,
-	},
-	header: {
-		fontSize: SIZES.h1,
-		marginBottom: 30,
-		fontFamily: "Poppins_bold",
-		color: COLORS.primary,
-		// fontWeight: "700",
-		// alignSelf: 'center'
+	submitButton: {
+		backgroundColor: "gray",
+		padding: 100,
 	},
 });
-
-export default SignInScreen;

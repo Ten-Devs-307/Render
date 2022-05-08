@@ -1,124 +1,149 @@
+import axios from "axios";
+import React, { useState } from "react";
 import {
-	View,
-	Text,
-	StyleSheet,
-	TouchableOpacity,
-	Image,
+  StyleSheet,
+  Text,
+  ScrollView,
+  View,
+  Button,
+  Platform,
+  TextInput,
 } from "react-native";
-import React, { useContext, useState } from "react";
-import Logo from "../../../assets/images/render.png";
-import CustomButton from "../../components/CustomButton";
-import CustomInput from "../../components/CustomInput";
+import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
-import { AuthContext } from "../../context/AuthContext";
-import Spinner from "react-native-loading-spinner-overlay";
-import { COLORS } from "../../constants/theme";
-import { Touchable } from "react-native-web";
-const SignUpScreen = () => {
-	// const [email, setEmail] = useState(null);
-	const [email, setEmail] = useState(null);
-	const [password, setPassword] = useState(null);
-	const [name, setName] = useState(null);
 
-	const navigation = useNavigation();
 
-	const onLoginPress = () => {
-		navigation.navigate("SignIn");
-	};
+const baseUrl = "http://www.renderjobs.com/api";
 
-	//   const {isLoading, register} = useContext(AuthContext);
-	const {register} = useContext(AuthContext);
-	const val = "This is a trial";
-	
+export default function App() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-	return (
-		<View style={styles.root}>
-			{/* <Spinner visible={isLoading}/> */}
-			<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
+  const navigation = useNavigation();
 
-			<Text style={styles.header}>Create an account.</Text>
-			<Text>{val}</Text>
-			<Text style={styles.label}>Email</Text>
-			<CustomInput
-				placeholder=""
-				value={email}
-				onChangeText={(text) => setEmail(text)}
-			/>
-			
-			<Text style={styles.label}>Name</Text>
-			<CustomInput
-				placeholder=""
-				value={name}
-				onChangeText={(text) => setName(text)}
-			/>
+  const onChangeNameHandler = (name) => {
+    setName(name);
+  };
 
-			<Text style={styles.label}>Password</Text>
-			<CustomInput
-				placeholder=""
-				secureTextEntry={true}
-				value={password}
-				onChangeText={(text) => setPassword(text)}
-			/>
+  const onChangeEmailHandler = (email) => {
+    setEmail(email);
+  };
+  const onChangePasswordHandler = (password) => {
+    setPassword(password);
+  };
 
-			{/* <Text style={styles.label}>Re-enter Password</Text>
-			<CustomInput
-				placeholder=""
-				secureTextEntry={true}
-				value={password2}
-				onChangeText={(text) => setPassword2(text)}
-			/> */}
-			<Text style={styles.text}>
-				By signing up, you agree to our Terms and Service and Privacy Policy.
-			</Text>
-			<CustomButton
-				text="Sign Up"
-				onPress={() => {
-				register(email, name, password);
-				}}
-			/>
-			<TouchableOpacity>
-				<Text style={styles.text} onPress={onLoginPress}>
-					Have an account? Log In{" "}
-				</Text>
-			</TouchableOpacity>
-		</View>
-	);
-};
+  const onSubmitFormHandler = async (event) => {
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      alert("Name or Email or password is invalid");
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const response = await axios.post(`${baseUrl}/sign-up/`, {
+			email,
+			name,
+			password,
+		},
+		{headers: {'Content-Type': 'application/json'}}
+		 );
+      if (response.status === 200 || response.status === 201) {
+        alert('Your account has been created successfully');
+        setIsLoading(false);
+        setName('');
+        setEmail('');
+        setPassword('');
+        navigation.navigate("SignIn");
+      } else {
+        throw new Error(response.status);
+      }
+    } catch (error) {
+      alert('Registration failed');
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <View>
+        <View style={styles.wrapper}>
+          {isLoading ? (
+            <Text style={styles.formHeading}> Creating resource </Text>
+          ) : (
+            <Text style={styles.formHeading}>Create new user</Text>
+          )}
+			  </View>
+			<View style={styles.wrapper}>
+          <TextInput
+            placeholder="Email"
+            placeholderTextColor="#ffffff"
+            style={styles.input}
+            value={email}
+            editable={!isLoading}
+            onChangeText={onChangeEmailHandler}
+				  />
+			</View>
+        <View style={styles.wrapper}>
+          <TextInput
+            placeholder="Full Name"
+            placeholderTextColor="#ffffff"
+            style={styles.input}
+            value={name}
+            editable={!isLoading}
+            onChangeText={onChangeNameHandler}
+          />
+        </View>
+
+        <View style={styles.wrapper}>
+          <TextInput
+            placeholder="Password"
+            placeholderTextColor="#ffffff"
+            style={styles.input}
+            value={password}
+            editable={!isLoading}
+            secureTextEntry={true}
+            onChangeText={onChangePasswordHandler}
+          />
+        </View>
+        <View>
+          <Button
+            title="Register"
+            onPress={onSubmitFormHandler}
+            style={styles.submitButton}
+            disabled={isLoading}
+          />
+        </View>
+      </View>
+    </ScrollView>
+  );
+}
 
 const styles = StyleSheet.create({
-	root: {
-		// alignItems: 'center',
-		justifyContent: "center",
-		flex: 1,
-		padding: 20,
-		marginBottom: 70,
-	},
-	label: {
-		// alignItems: '',
-		fontSize: 18,
-	},
-	text: {
-		fontSize: 18,
-		alignSelf: "center",
-		color: "#000",
-	},
-	// login: {
-	// 	fontWeight: "bold",
-	// 	color: COLORS.primary,
-	// 	fontSize: 18,
-	// },
-	logo: {
-		width: "80%",
-		maxWidth: 300,
-		maxHeight: 200,
-		alignSelf: "center",
-	},
-	header: {
-		fontSize: 26,
-		marginBottom: 10,
-		fontWeight: "700",
-		// alignSelf: 'center'
-	},
+  container: {
+    flex: 1,
+    backgroundColor: "#252526",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
+  },
+  formHeading: {
+    color: "#ffffff",
+  },
+  wrapper: {
+    marginBottom: 10,
+  },
+  input: {
+    borderWidth: 2,
+    borderColor: "grey",
+    minWidth: 200,
+    textAlignVertical: "center",
+    paddingLeft: 10,
+    borderRadius: 20,
+    color: "#ffffff",
+  },
+  submitButton: {
+    backgroundColor: "gray",
+    padding: 100,
+  },
 });
-
-export default SignUpScreen;

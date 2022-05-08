@@ -32,12 +32,12 @@ export const AuthProvider = ({ children }) => {
     axios.post(`${BASE_URL}/sign-up/`,
         { email, 
           name, 
-          password, },
-        {
-          "headers": {
-            'Content-Type': 'application/json',
-          }
-        }).then(res => {
+          password,},
+      {
+        headers:
+          { 'Content-Type': 'application/json' }
+      }
+        ).then(res => {
         let userInfo = res.data;
         console.log(userInfo);
           
@@ -53,12 +53,13 @@ export const AuthProvider = ({ children }) => {
     axios.post(`${BASE_URL}/login/`, {
       email,
       password,
-    }).then(res => {
+    }, { headers: { 'Content-Type': 'application/json' }}
+    ).then(res => {
       let userInfo = res.data;
       console.log(userInfo);
     }).catch(e => {
       console.log(`${e}`);
-    });r
+    });
   };
   
    return(
