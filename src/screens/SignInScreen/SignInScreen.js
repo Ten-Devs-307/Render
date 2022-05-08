@@ -27,7 +27,7 @@ const SignInScreen = () => {
 	const navigation = useNavigation();
 
 	const onSignInPress = () => {
-		login(email,password)
+		login(email, password);
 		navigation.navigate("HomeScreen");
 	};
 
@@ -38,7 +38,7 @@ const SignInScreen = () => {
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
 
-	const {login} = useContext(AuthContext);
+	const { login } = useContext(AuthContext);
 	const val = "This is a trial";
 
 	return (
@@ -60,35 +60,13 @@ const SignInScreen = () => {
 				onChangeText={(text) => setPassword(text)}
 				value={password}
 			/>
-<<<<<<< HEAD
-			<CustomButton text="Sign In" onPress={onSignInPress} />
 
-			<Text style={styles.label}>Password</Text>
-			<CustomInput
-				placeholder=""
-				secureTextEntry={true}
-				onChangeText={(text) => setPassword(text)}
-				value={password}
-			/>
-			<CustomButton text="Sign In" />
-
-			<TouchableOpacity onPress={onSignUpPress}>
-				<Text style={styles.text}>
-					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
-				</Text>
-			</TouchableOpacity>
 			<CustomButton text="Sign In" onPress={onSignInPress} />
 			<TouchableOpacity onPress={onSignUpPress}>
 				<Text style={styles.text}>
 					Don't have an account? <Text style={styles.signin}>Sign Up</Text>
 				</Text>
 			</TouchableOpacity>
-=======
-			<CustomButton text="Sign In" onPress={onSignInPress} /> 
-       <TouchableOpacity onPress={onSignUpPress} >
-         <Text style={styles.text} >Don't have an account? <Text style={styles.signin}>Sign Up</Text></Text>
-       </TouchableOpacity>
->>>>>>> 71ab498ea4327c5ccae111dcc68a47f20c9bbb28
 		</View>
 	);
 };
