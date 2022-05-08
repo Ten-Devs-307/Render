@@ -1,4 +1,6 @@
 import axios from "axios";
+import { BASE_URL } from '../../components/configurations/config';
+
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -13,32 +15,30 @@ import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 
 
-const baseUrl = "http://www.renderjobs.com/api";
 
 export default function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const navigation = useNavigation();
 
-  const onChangeEmailHandler = (email) => {
-    setEmail(email);
+  const onChangeUsernameHandler = (email) => {
+    setUsername(email);
   };
   const onChangePasswordHandler = (password) => {
     setPassword(password);
   };
 
   const onSubmitFormHandler = async (event) => {
-    if (!email.trim() || !password.trim()) {
-      alert("Name or Email is invalid");
+    if (!username.trim() || !password.trim()) {
+      alert("Username or Password is invalid");
       return;
     }
     setIsLoading(true);
     try {
-      const response = await axios.post(`${baseUrl}/login/`, {
-			email,
+      const response = await axios.post(`${BASE_URL}/login/`, {
+			username,
 			password,
 		},
 		{headers: {'Content-Type': 'application/json'}}
@@ -46,7 +46,7 @@ export default function App() {
       if (response.status === 200 || response.status === 201) {
         alert('Logged in Successfully');
         setIsLoading(false);
-        setEmail('');
+        setUsername('');
         setPassword('');
         navigation.navigate("HomeScreen");
       } else {
@@ -73,9 +73,9 @@ export default function App() {
             placeholder="Email"
             placeholderTextColor="#ffffff"
             style={styles.input}
-            value={email}
+            value={username}
             editable={!isLoading}
-            onChangeText={onChangeEmailHandler}
+            onChangeText={onChangeUsernameHandler}
 				  />
 			</View>
         <View style={styles.wrapper}>
