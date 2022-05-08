@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { COLORS, SIZES } from "../../constants/theme";
 import { useFonts } from "expo-font";
-import * as Font from "expo-font";
+// import * as Font from "expo-font";
 import StartUpScreen from "../StartUpScreen";
 
 const slides = [
@@ -122,14 +122,14 @@ const styles = StyleSheet.create({
 	head: {
 		fontSize: SIZES.h1,
 		color: COLORS.primary,
-		// fontWeight: "bold",
-		fontFamily: "Poppins_bold",
+		fontWeight: "bold",
+		// fontFamily: "Poppins_bold",
 		// marginBottom: 5,
 		textAlign: "center",
 		padding: 5,
 	},
 	desc: {
-		fontSize: SIZES.h4,
+		fontSize: SIZES.h3,
 		color: COLORS.title,
 		fontFamily: "Poppins_light",
 		textAlign: "center",
@@ -140,9 +140,9 @@ const styles = StyleSheet.create({
 	},
 	buttonlabel: {
 		color: COLORS.title,
-		// fontWeight: "700",
+		fontWeight: "700",
 		fontSize: SIZES.h3,
-		fontFamily: "Poppins_regular",
+		// fontFamily: "Poppins_bold",
 	},
 });
 

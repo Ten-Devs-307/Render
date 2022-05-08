@@ -3,13 +3,13 @@ import { BASE_URL } from '../../components/configurations/config';
 
 import React, { useState } from "react";
 import {
-  StyleSheet,
-  Text,
-  ScrollView,
-  View,
-  Button,
-  Platform,
-  TextInput,
+	StyleSheet,
+	Text,
+	ScrollView,
+	View,
+	Button,
+	Platform,
+	TextInput,
 } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
@@ -21,7 +21,7 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigation = useNavigation();
+	const navigation = useNavigation();
 
   const onChangeUsernameHandler = (email) => {
     setUsername(email);
@@ -60,7 +60,6 @@ export default function App() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View>
         <View style={styles.wrapper}>
           {isLoading ? (
             <Text style={styles.formHeading}> Logging in User </Text>
@@ -78,55 +77,35 @@ export default function App() {
             onChangeText={onChangeUsernameHandler}
 				  />
 			</View>
-        <View style={styles.wrapper}>
-          <TextInput
-            placeholder="Password"
-            placeholderTextColor="#ffffff"
-            style={styles.input}
-            value={password}
-            editable={!isLoading}
-            secureTextEntry={true}
-            onChangeText={onChangePasswordHandler}
-          />
-        </View>
-        <View>
-          <Button
-            title="Login"
-            onPress={onSubmitFormHandler}
-            style={styles.submitButton}
-            disabled={isLoading}
-          />
-        </View>
-      </View>
-    </ScrollView>
-  );
+		</ScrollView>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#252526",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
-  },
-  formHeading: {
-    color: "#ffffff",
-  },
-  wrapper: {
-    marginBottom: 10,
-  },
-  input: {
-    borderWidth: 2,
-    borderColor: "grey",
-    minWidth: 200,
-    textAlignVertical: "center",
-    paddingLeft: 10,
-    borderRadius: 20,
-    color: "#ffffff",
-  },
-  submitButton: {
-    backgroundColor: "gray",
-    padding: 100,
-  },
+	container: {
+		flex: 1,
+		backgroundColor: "#252526",
+		alignItems: "center",
+		justifyContent: "center",
+		marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
+	},
+	formHeading: {
+		color: "#ffffff",
+	},
+	wrapper: {
+		marginBottom: 10,
+	},
+	input: {
+		borderWidth: 2,
+		borderColor: "grey",
+		minWidth: 200,
+		textAlignVertical: "center",
+		paddingLeft: 10,
+		borderRadius: 20,
+		color: "#ffffff",
+	},
+	submitButton: {
+		backgroundColor: "gray",
+		padding: 100,
+	},
 });
