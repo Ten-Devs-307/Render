@@ -20,6 +20,7 @@ export default function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  
 
 	const navigation = useNavigation();
 
@@ -77,6 +78,25 @@ export default function App() {
             onChangeText={onChangeUsernameHandler}
 				  />
 			</View>
+			<View style={styles.wrapper}>
+          <TextInput
+            placeholder="Password"
+            placeholderTextColor="#ffffff"
+            style={styles.input}
+            value={password}
+            editable={!isLoading}
+            secureTextEntry={true}
+            onChangeText={onChangePasswordHandler}
+				  />
+      </View>
+      <View>
+          <Button
+            title="Login"
+            onPress={onSubmitFormHandler}
+            style={styles.submitButton}
+            disabled={isLoading}
+          />
+        </View>
 		</ScrollView>
 	);
 }

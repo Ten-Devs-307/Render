@@ -3,6 +3,7 @@ import React from "react";
 import CustomButton from "../../components/CustomButton";
 import ListItem from "../../components/ListItem";
 import { useNavigation } from "@react-navigation/native";
+import JobCategoriesList from "../../components/job-categories/JobCategoriesList";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const { width } = Dimensions.get('screen');
 const HomeScreen = () => {
@@ -29,12 +30,12 @@ const HomeScreen = () => {
 			{ title: "Laundry Services" },
 			{ title: "Barbering Services" },
 			{ title: "Cooking Services" },
-		];
-		return <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+		];return <ScrollView horizontal showsHorizontalScrollIndicator={false}>
 			{ServicesList.map((option, index) =>
 				<ListItem type="agent" key={index} name={option.title} image={{ uri: profile_img }} city='Accra'/>
 			)}
 		</ScrollView>;
+		
 	};
 
 	const ListCategories = () => {
@@ -86,7 +87,8 @@ const HomeScreen = () => {
 						<Icon name='tune' size={25} color={'white'}/>
 					</View>
 				</View>
-				<ListServices />
+				{/* <ListServices /> */}
+				<JobCategoriesList/>
 				<ListCategories />
 				<Card />
 				<Card />
