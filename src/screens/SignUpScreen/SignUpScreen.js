@@ -8,20 +8,38 @@ import {
 	Button,
 	Platform,
 	TextInput,
+	TouchableOpacity,
 } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
-import Logo from "../../../assets/images/render.png";
+// import Logo from "../../../assets/images/render.png";
+// import Logo from "../../../assets/images/render.png";
+import CustomButton from "../../components/CustomButton";
+import CustomInput from "../../components/CustomInput";
+import { SIZES, COLORS } from "../../constants/theme";
+import { useFonts } from "expo-font";
 
 const baseUrl = "http://www.renderjobs.com/api";
 
-export default function App() {
+const SignUpScreen = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
 	const navigation = useNavigation();
+
+	const [loaded] = useFonts({
+		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
+		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
+		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
+		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
+		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
+	});
+
+	const onLoginPress = () => {
+		navigation.navigate("SignIn");
+	};
 
 	const onChangeNameHandler = (name) => {
 		setName(name);
@@ -71,13 +89,13 @@ export default function App() {
 			<View>
 				<View style={styles.wrapper}>
 					{isLoading ? (
-						<Text style={styles.formHeading}> Creating resource </Text>
+						<Text style={styles.formHeading}> Creating user account </Text>
 					) : (
-						<Text style={styles.formHeading}>Create new user</Text>
+						<Text style={styles.formHeading}>Create a new account</Text>
 					)}
 				</View>
 				<View style={styles.wrapper}>
-					<TextInput
+					<CustomInput
 						placeholder="Email"
 						placeholderTextColor="#ffffff"
 						style={styles.input}
@@ -87,7 +105,7 @@ export default function App() {
 					/>
 				</View>
 				<View style={styles.wrapper}>
-					<TextInput
+					<CustomInput
 						placeholder="Full Name"
 						placeholderTextColor="#ffffff"
 						style={styles.input}
@@ -98,7 +116,7 @@ export default function App() {
 				</View>
 
 				<View style={styles.wrapper}>
-					<TextInput
+					<CustomInput
 						placeholder="Password"
 						placeholderTextColor="#ffffff"
 						style={styles.input}
@@ -109,28 +127,34 @@ export default function App() {
 					/>
 				</View>
 				<View>
-					<Button
-						title="Register"
+					<CustomButton
+						text="Register"
 						onPress={onSubmitFormHandler}
 						style={styles.submitButton}
 						disabled={isLoading}
 					/>
 				</View>
+				<Text style={styles.text}>
+					By signing up, you agree to our Terms and Service and Privacy Policy.
+				</Text>
+				<TouchableOpacity onPress={onLoginPress}>
+					<Text style={styles.text}>Have an account? Log In{""}</Text>
+				</TouchableOpacity>
 			</View>
 		</ScrollView>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		backgroundColor: "#252526",
-		alignItems: "center",
+		// flex: 1,
 		justifyContent: "center",
 		marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
+		padding: 15,
 	},
 	formHeading: {
-		color: "#ffffff",
+		// color: "#000",
+		fontSize: SIZES.h3,
 	},
 	wrapper: {
 		marginBottom: 10,
@@ -142,10 +166,18 @@ const styles = StyleSheet.create({
 		textAlignVertical: "center",
 		paddingLeft: 10,
 		borderRadius: 20,
-		color: "#ffffff",
+		// color: "#ffffff",
 	},
 	submitButton: {
 		backgroundColor: "gray",
 		padding: 100,
 	},
+	text: {
+		fontSize: SIZES.h4,
+		alignSelf: "center",
+		color: "#000",
+		marginTop: 10,
+	},
 });
+
+export default SignUpScreen;

@@ -7,6 +7,7 @@ import {
 	TouchableOpacity,
 } from "react-native";
 import { COLORS, SIZES } from "../../constants/theme";
+import { useFonts } from "expo-font";
 // import { TouchableOpacity } from 'react-native-web';
 
 const CustomButton = ({
@@ -16,6 +17,14 @@ const CustomButton = ({
 	bgColor,
 	fgColor,
 }) => {
+	const [loaded] = useFonts({
+		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
+		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
+		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
+		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
+		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
+	});
+
 	return (
 		<TouchableOpacity
 			onPress={onPress}

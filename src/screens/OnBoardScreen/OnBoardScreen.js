@@ -73,28 +73,30 @@ const OnBoardScreen = () => {
 
 	if (!showHomePage) {
 		return (
-			<AppIntroSlider
-				data={slides}
-				renderItem={({ item }) => {
-					return (
-						<View style={styles.root}>
-							<Image
-								style={styles.image}
-								source={item.image}
-								resizeMode="contain"
-							/>
-							<Text style={styles.head}>{item.title}</Text>
-							<Text style={styles.desc}>{item.description}</Text>
-						</View>
-					);
-				}}
-				activeDotStyle={{ backgroundColor: COLORS.primary, width: 30 }}
-				showSkipButton
-				renderNextButton={() => buttonLabel("Next")}
-				renderSkipButton={() => buttonLabel("Skip")}
-				renderDoneButton={() => buttonLabel("Done")}
-				onDone={onDone}
-			/>
+			<SafeAreaView style={styles.root}>
+				<AppIntroSlider
+					data={slides}
+					renderItem={({ item }) => {
+						return (
+							<View style={styles.container}>
+								<Image
+									style={styles.image}
+									source={item.image}
+									resizeMode="contain"
+								/>
+								<Text style={styles.head}>{item.title}</Text>
+								<Text style={styles.desc}>{item.description}</Text>
+							</View>
+						);
+					}}
+					activeDotStyle={{ backgroundColor: COLORS.primary, width: 30 }}
+					showSkipButton
+					renderNextButton={() => buttonLabel("Next")}
+					renderSkipButton={() => buttonLabel("Skip")}
+					renderDoneButton={() => buttonLabel("Done")}
+					onDone={onDone}
+				/>
+			</SafeAreaView>
 		);
 	}
 
@@ -107,11 +109,13 @@ const OnBoardScreen = () => {
 
 const styles = StyleSheet.create({
 	root: {
-		alignItems: "center",
-		justifyContent: "center",
 		flex: 1,
+	},
+	container: {
+		flex: 1,
+		alignItems: "center",
 		padding: 15,
-		// paddingTop: 100,
+		paddingTop: 100,
 	},
 	image: {
 		width: SIZES.width,
