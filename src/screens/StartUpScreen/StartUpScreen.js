@@ -2,6 +2,7 @@ import {
 	View,
 	Text,
 	StyleSheet,
+	SafeAreaView,
 	TouchableOpacity,
 	Image,
 	useWindowDimensions,
@@ -38,33 +39,36 @@ const SignInScreen = () => {
 	};
 
 	return (
-		<View style={styles.root}>
-			<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
-			<Text style={styles.header1}>Get things done with Render!</Text>
-			<Text style={styles.header2}>Easy, Convenient and Affordable</Text>
-			<Text style={styles.desc}>
-				Search and book a labourer with just a click anytime and anywhere.
-			</Text>
-			<CustomButton text="Log In" onPress={onSignInPress} />
-			<CustomButton text="Sign Up" onPress={onSignUpPress} />
-		</View>
+		<SafeAreaView style={styles.root}>
+			<View style={styles.container}>
+				<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
+				<Text style={styles.header1}>Get things done with Render!</Text>
+				<Text style={styles.header2}>Easy, Convenient and Affordable</Text>
+				<Text style={styles.desc}>
+					Search and book a labourer with just a click anytime and anywhere.
+				</Text>
+				<CustomButton text="Log In" onPress={onSignInPress} />
+				<CustomButton text="Sign Up" onPress={onSignUpPress} />
+			</View>
+		</SafeAreaView>
 	);
 };
 
 const styles = StyleSheet.create({
 	root: {
-		// alignItems: 'center',
+		flex: 1,
+	},
+	container: {
 		justifyContent: "center",
 		flex: 1,
 		padding: 20,
-		
 	},
 	header1: {
 		fontSize: SIZES.h1,
 		marginBottom: 5,
 		// fontWeight: "700",
 		fontFamily: "Poppins_bold",
-		alignSelf: "center",
+		textAlign: "center",
 		color: COLORS.primary,
 	},
 	header2: {
