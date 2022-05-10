@@ -19,7 +19,7 @@ import CustomInput from "../../components/CustomInput";
 import { SIZES, COLORS } from "../../constants/theme";
 import { useFonts } from "expo-font";
 
-const baseUrl = "http://www.renderjobs.com/api";
+import { API_URL } from '../../components/configurations/config';
 
 const SignUpScreen = () => {
 	const [name, setName] = useState("");
@@ -60,7 +60,7 @@ const SignUpScreen = () => {
 		setIsLoading(true);
 		try {
 			const response = await axios.post(
-				`${baseUrl}/sign-up/`,
+				`${API_URL}/sign-up/`,
 				{
 					email,
 					name,

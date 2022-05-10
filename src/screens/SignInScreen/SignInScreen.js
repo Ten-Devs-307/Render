@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../../components/configurations/config";
+import { API_URL } from '../../components/configurations/config';
 
 import React, { useState } from "react";
 import {
@@ -45,35 +45,33 @@ const SignInScreen = () => {
 		setPassword(password);
 	};
 
-	const onSubmitFormHandler = async (event) => {
-		if (!username.trim() || !password.trim()) {
-			alert("Username or Password is invalid");
-			return;
-		}
-		setIsLoading(true);
-		try {
-			const response = await axios.post(
-				`${BASE_URL}/login/`,
-				{
-					username,
-					password,
-				},
-				{ headers: { "Content-Type": "application/json" } }
-			);
-			if (response.status === 200 || response.status === 201) {
-				alert("Logged in Successfully");
-				setIsLoading(false);
-				setUsername("");
-				setPassword("");
-				navigation.navigate("HomeScreen");
-			} else {
-				throw new Error(response.status);
-			}
-		} catch (error) {
-			alert("Login failed");
-			setIsLoading(false);
-		}
-	};
+  const onSubmitFormHandler = async (event) => {
+    if (!username.trim() || !password.trim()) {
+      alert("Username or Password is invalid");
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const response = await axios.post(`${API_URL}/login/`, {
+			username,
+			password,
+		},
+		{headers: {'Content-Type': 'application/json'}}
+		 );
+      if (response.status === 200 || response.status === 201) {
+        alert('Logged in Successfully');
+        setIsLoading(false);
+        setUsername('');
+        setPassword('');
+        navigation.navigate("HomeScreen");
+      } else {
+        throw new Error(response.status);
+      }
+    } catch (error) {
+      alert('Login failed');
+      setIsLoading(false);
+    }
+  };
 
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
