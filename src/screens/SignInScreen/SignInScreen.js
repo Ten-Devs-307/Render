@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import {
 	StyleSheet,
 	Text,
+	TextInput,
 	ScrollView,
 	View,
 	Platform,
@@ -76,7 +77,7 @@ const SignInScreen = () => {
 
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
-			<View style={styles.wrapper}>
+			<View style={styles.header}>
 				{/* <Image source={Logo} style={[styles.logo]} resizeMode="contain" /> */}
 				{isLoading ? (
 					<Text style={styles.formHeading}> Logging in User </Text>
@@ -85,7 +86,7 @@ const SignInScreen = () => {
 				)}
 			</View>
 			<View style={styles.wrapper}>
-				<CustomInput
+				<TextInput
 					placeholder="Email"
 					placeholderTextColor="#000"
 					style={styles.input}
@@ -95,7 +96,7 @@ const SignInScreen = () => {
 				/>
 			</View>
 			<View style={styles.wrapper}>
-				<CustomInput
+				<TextInput
 					placeholder="Password"
 					placeholderTextColor="#000"
 					style={styles.input}
@@ -144,15 +145,18 @@ const styles = StyleSheet.create({
 		fontSize: SIZES.h3,
 	},
 	wrapper: {
-		marginBottom: 10,
+		// backgroundColor: "white",
+		width: "100%",
+		borderColor: "#000",
+		// borderRadius: 5,
+		borderBottomWidth: 2,
+		// paddingHorizontal: 10,
+		paddingVertical: 5,
+		marginBottom: 30,
+		marginVertical: 10,
 	},
 	input: {
-		borderWidth: 2,
-		borderColor: "grey",
-		minWidth: 200,
-		textAlignVertical: "center",
-		paddingLeft: 10,
-		borderRadius: 20,
+		fontSize: SIZES.h3,
 		color: "#000",
 	},
 	submitButton: {
@@ -161,10 +165,9 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		fontSize: SIZES.h4,
-		fontFamily: "Poppins_regular",
-		paddingTop: 20,
 		alignSelf: "center",
 		color: "#000",
+		marginTop: 10,
 	},
 	signin: {
 		fontWeight: "bold",

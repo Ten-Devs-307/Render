@@ -22,8 +22,8 @@ const Navigation = () => {
 				// initialRouteName={OnBoardScreen}
 			>
 				{/* <Stack.Screen name="Splash" component={SplashScreen} /> */}
-				<Stack.Screen name="OnBoard" component={OnBoardScreen} />
-				<Stack.Screen name="StartUp" component={StartUpScreen} />
+				{/* <Stack.Screen name="OnBoard" component={OnBoardScreen} /> */}
+				{/* <Stack.Screen name="StartUp" component={StartUpScreen} /> */}
 				<Stack.Screen name="SignIn" component={SignInScreen} />
 				<Stack.Screen name="SignUp" component={SignUpScreen} />
 				<Stack.Screen name="ForgotPassword" component={ForgotPassword} />

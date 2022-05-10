@@ -87,7 +87,7 @@ const SignUpScreen = () => {
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
 			<View>
-				<View style={styles.wrapper}>
+				<View style={styles.header}>
 					{isLoading ? (
 						<Text style={styles.formHeading}> Creating user account </Text>
 					) : (
@@ -95,9 +95,9 @@ const SignUpScreen = () => {
 					)}
 				</View>
 				<View style={styles.wrapper}>
-					<CustomInput
+					<TextInput
 						placeholder="Email"
-						placeholderTextColor="#ffffff"
+						placeholderTextColor="#000"
 						style={styles.input}
 						value={email}
 						editable={!isLoading}
@@ -105,9 +105,9 @@ const SignUpScreen = () => {
 					/>
 				</View>
 				<View style={styles.wrapper}>
-					<CustomInput
+					<TextInput
 						placeholder="Full Name"
-						placeholderTextColor="#ffffff"
+						placeholderTextColor="#000"
 						style={styles.input}
 						value={name}
 						editable={!isLoading}
@@ -116,9 +116,9 @@ const SignUpScreen = () => {
 				</View>
 
 				<View style={styles.wrapper}>
-					<CustomInput
+					<TextInput
 						placeholder="Password"
-						placeholderTextColor="#ffffff"
+						placeholderTextColor="#000"
 						style={styles.input}
 						value={password}
 						editable={!isLoading}
@@ -152,21 +152,32 @@ const styles = StyleSheet.create({
 		marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
 		padding: 15,
 	},
+	header: {
+		fontSize: SIZES.h1,
+		marginBottom: 30,
+		fontFamily: "Poppins_bold",
+		color: COLORS.primary,
+		// fontWeight: "700",
+		// alignSelf: 'center'
+	},
 	formHeading: {
 		// color: "#000",
 		fontSize: SIZES.h3,
 	},
 	wrapper: {
-		marginBottom: 10,
+		// backgroundColor: "white",
+		width: "100%",
+		borderColor: "#000",
+		// borderRadius: 5,
+		borderBottomWidth: 2,
+		// paddingHorizontal: 10,
+		paddingVertical: 5,
+		marginBottom: 30,
+		marginVertical: 10,
 	},
 	input: {
-		borderWidth: 2,
-		borderColor: "grey",
-		minWidth: 200,
-		textAlignVertical: "center",
-		paddingLeft: 10,
-		borderRadius: 20,
-		// color: "#ffffff",
+		fontSize: SIZES.h3,
+		color: "#000",
 	},
 	submitButton: {
 		backgroundColor: "gray",

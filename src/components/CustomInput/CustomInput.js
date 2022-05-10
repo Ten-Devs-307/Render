@@ -9,6 +9,7 @@ const CustomInput = ({
 	placeholder,
 	secureTextEntry,
 	editable,
+	style,
 }) => {
 	const [loaded] = useFonts({
 		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
@@ -26,7 +27,7 @@ const CustomInput = ({
 				placeholder={placeholder}
 				style={styles.input}
 				secureTextEntry={secureTextEntry}
-				editable={true}
+				editable={editable}
 			/>
 		</View>
 	);
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
 		marginVertical: 10,
 	},
 	input: {
-		fontSize: 20,
+		fontSize: SIZES.h3,
 		color: "#000",
 	},
 });
