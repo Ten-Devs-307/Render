@@ -147,7 +147,7 @@ const SignUpScreen = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		// flex: 1,
+		flex: 1,
 		justifyContent: "center",
 		marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
 		padding: 15,

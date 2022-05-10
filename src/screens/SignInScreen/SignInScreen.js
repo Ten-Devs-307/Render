@@ -77,7 +77,7 @@ const SignInScreen = () => {
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
 			<View style={styles.wrapper}>
-				<Image source={Logo} style={[styles.logo]} resizeMode="contain" />
+				{/* <Image source={Logo} style={[styles.logo]} resizeMode="contain" /> */}
 				{isLoading ? (
 					<Text style={styles.formHeading}> Logging in User </Text>
 				) : (
@@ -112,11 +112,10 @@ const SignInScreen = () => {
 					style={styles.submitButton}
 					disabled={isLoading}
 				/>
-				<TouchableOpacity>
-					{/* onPress={onSignUpPress} */}
+				<TouchableOpacity onPress={onSignUpPress}>
 					<Text style={styles.text}>
 						Don't have an account?
-						<Text style={styles.signin}>Sign Up</Text>
+						<Text style={styles.signin}> Sign Up</Text>
 					</Text>
 				</TouchableOpacity>
 			</View>
