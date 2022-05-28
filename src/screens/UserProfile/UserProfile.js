@@ -1,14 +1,58 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const profile_img =
-	"https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559_960_720.jpg";
+import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
+
+
+import {API_URL} from "../../components/configurations/config"
+
+const profile_img = "https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559_960_720.jpg";
+
+
 
 const UserProfile = () => {
+	const {userInfo} = useContext(AuthContext)
+	const [userData, setUserData] = useState([]);
+	
+
+	useEffect(async () => {
+		axios.get(`${API_URL}/user-profile/`,
+		{
+        headers:
+			{
+				'Content-Type': 'application/json',
+				'Authorization': `Token ${userInfo.token}`}
+			}).then(res => {
+				let userObject = res.data;
+				setUserData(userObject);
+				console.log(userObject)
+				return userData;
+			}).catch(e => {
+				console.log(e);
+			});
+	}, []);
+
+	const getUserDetailsWithFetch = async () => {
+		axios.get(`${API_URL}/user-profile/`,
+		{
+        headers:
+			{
+				'Content-Type': 'application/json',
+				'Authorization': `Token ${userInfo.token}`}
+			}).then(res => {
+				let userObject = res.data;
+				setUserData(userObject);
+				return userData;
+			}).catch(e => {
+				console.log(e);
+			});
+	};
+
 	return (
 		<View style={styles.root}>
 			{/* Agent profile */}
@@ -16,7 +60,7 @@ const UserProfile = () => {
 
 			{/* Profile Name */}
 			<View style={styles.prof_name_grp}>
-				<Text style={styles.profile_name}>Mike Owusu</Text>
+				<Text style={styles.profile_name}>{userData.user.name}</Text>
 				<MaterialCommunityIcons name="check-decagram" size={20} color="black" />
 			</View>
 
@@ -43,7 +87,7 @@ const UserProfile = () => {
 						size={20}
 						color="black"
 					/>
-					<Text style={styles.profile_det}>mikeowusu@gmail.com</Text>
+					<Text style={styles.profile_det}></Text>
 				</View>
 				<View style={styles.profile_details}>
 					<FontAwesome

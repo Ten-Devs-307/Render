@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useContext} from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignInScreen from "../screens/SignInScreen/SignInScreen";
@@ -12,24 +12,30 @@ import HomeScreen from "../screens/HomeScreen";
 import JobDetails from "../screens/JobDetails";
 import SplashScreen from "../screens/SplashScreen/SplashScreen";
 
+import { AuthContext } from "../context/AuthContext";
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
+	const {userInfo} = useContext(AuthContext);
 	return (
 		<NavigationContainer>
 			<Stack.Navigator
-				screenOptions={{ headerShown: false }}
-				// initialRouteName={OnBoardScreen}
-			>
-				{/* <Stack.Screen name="Splash" component={SplashScreen} /> */}
+				screenOptions={{ headerShown: false }}>
+				{userInfo.token ? (
+					<>
+				<Stack.Screen name="HomeScreen" component={HomeScreen} />
+				<Stack.Screen name="UserProfile" component={UserProfile} />
+				<Stack.Screen name="JobDetails" component={JobDetails} />
+					</>
+				) : (
+						<>	
 				<Stack.Screen name="OnBoard" component={OnBoardScreen} />
 				<Stack.Screen name="StartUp" component={StartUpScreen} />
 				<Stack.Screen name="SignIn" component={SignInScreen} />
 				<Stack.Screen name="SignUp" component={SignUpScreen} />
 				<Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-				<Stack.Screen name="HomeScreen" component={HomeScreen} />
-				<Stack.Screen name="UserProfile" component={UserProfile} />
-				<Stack.Screen name="JobDetails" component={JobDetails} />
+					</>
+				)}
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

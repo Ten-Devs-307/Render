@@ -15,8 +15,6 @@ import { useNavigation } from "@react-navigation/native";
 import { COLORS, SIZES } from "../../constants/theme";
 import { useFonts } from "expo-font";
 
-// const {height} = useWindowDimensions();
-
 const SignInScreen = () => {
 	const navigation = useNavigation();
 
@@ -29,12 +27,10 @@ const SignInScreen = () => {
 	});
 
 	const onSignUpPress = () => {
-		// console.warn("Sign Up");
 		navigation.navigate("SignUp");
 	};
 
 	const onSignInPress = () => {
-		// console.warn("Sign In");
 		navigation.navigate("SignIn");
 	};
 

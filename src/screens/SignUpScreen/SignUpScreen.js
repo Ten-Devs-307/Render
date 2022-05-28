@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -12,20 +12,20 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
-// import Logo from "../../../assets/images/render.png";
-// import Logo from "../../../assets/images/render.png";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { SIZES, COLORS } from "../../constants/theme";
 import { useFonts } from "expo-font";
 
-import { API_URL } from '../../components/configurations/config';
+import { AuthContext } from "../../context/AuthContext";
+import Spinner from "react-native-loading-spinner-overlay/lib";
 
 const SignUpScreen = () => {
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
+	const [name, setName] = useState(null);
+	const [email, setEmail] = useState(null);
+	const [password, setPassword] = useState(null);
+
+	const {register, isLoading} = useContext(AuthContext)
 
 	const navigation = useNavigation();
 
@@ -52,47 +52,12 @@ const SignUpScreen = () => {
 		setPassword(password);
 	};
 
-	const onSubmitFormHandler = async (event) => {
-		if (!name.trim() || !email.trim() || !password.trim()) {
-			alert("Name or Email or password is invalid");
-			return;
-		}
-		setIsLoading(true);
-		try {
-			const response = await axios.post(
-				`${API_URL}/sign-up/`,
-				{
-					email,
-					name,
-					password,
-				},
-				{ headers: { "Content-Type": "application/json" } }
-			);
-			if (response.status === 200 || response.status === 201) {
-				alert("Your account has been created successfully");
-				setIsLoading(false);
-				setName("");
-				setEmail("");
-				setPassword("");
-				navigation.navigate("SignIn");
-			} else {
-				throw new Error(response.status);
-			}
-		} catch (error) {
-			alert("Registration failed");
-			setIsLoading(false);
-		}
-	};
-
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
+			<Spinner visible={ isLoading}/>
 			<View>
 				<View style={styles.header}>
-					{isLoading ? (
-						<Text style={styles.formHeading}> Creating user account </Text>
-					) : (
-						<Text style={styles.formHeading}>Create a new account</Text>
-					)}
+					<Text style={styles.formHeading}>Create a new account</Text>
 				</View>
 				<View style={styles.wrapper}>
 					<TextInput
@@ -100,8 +65,7 @@ const SignUpScreen = () => {
 						placeholderTextColor="#000"
 						style={styles.input}
 						value={email}
-						editable={!isLoading}
-						onChangeText={onChangeEmailHandler}
+						onChangeText={text => setEmail(text)}
 					/>
 				</View>
 				<View style={styles.wrapper}>
@@ -110,8 +74,7 @@ const SignUpScreen = () => {
 						placeholderTextColor="#000"
 						style={styles.input}
 						value={name}
-						editable={!isLoading}
-						onChangeText={onChangeNameHandler}
+						onChangeText={text => setName(text)}
 					/>
 				</View>
 
@@ -121,24 +84,26 @@ const SignUpScreen = () => {
 						placeholderTextColor="#000"
 						style={styles.input}
 						value={password}
-						editable={!isLoading}
 						secureTextEntry={true}
-						onChangeText={onChangePasswordHandler}
+						onChangeText={text=>setPassword(text)}
 					/>
 				</View>
 				<View>
-					<CustomButton
+					{/* <CustomButton
 						text="Register"
-						onPress={onSubmitFormHandler}
+						onPress={register(email, name, password)}
 						style={styles.submitButton}
-						disabled={isLoading}
-					/>
+					/> */}
+					{/* I commented out the custom button because it was giving errors.. */}
+					<Button title="Register" onPress={() => register(email,name,password)} style={styles.submitButton}/>
 				</View>
 				<Text style={styles.text}>
 					By signing up, you agree to our Terms and Service and Privacy Policy.
 				</Text>
 				<TouchableOpacity onPress={onLoginPress}>
-					<Text style={styles.text}>Have an account? Log In{""}</Text>
+					<Text style={styles.text}>Have an account?
+						<Text style={styles.login}>Log In{""}</Text>
+					</Text>
 				</TouchableOpacity>
 			</View>
 		</ScrollView>
@@ -157,12 +122,14 @@ const styles = StyleSheet.create({
 		marginBottom: 30,
 		fontFamily: "Poppins_bold",
 		color: COLORS.primary,
+    justifyContent: "center",
+    alignItems: "center",
 		// fontWeight: "700",
 		// alignSelf: 'center'
 	},
 	formHeading: {
 		// color: "#000",
-		fontSize: SIZES.h3,
+    fontSize: SIZES.h3,
 	},
 	wrapper: {
 		// backgroundColor: "white",
@@ -188,6 +155,9 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 		color: "#000",
 		marginTop: 10,
+	},
+	login: {
+		fontWeight: "bold",
 	},
 });
 

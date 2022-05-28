@@ -1,7 +1,4 @@
-import axios from "axios";
-import { API_URL } from '../../components/configurations/config';
-
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -10,6 +7,7 @@ import {
 	View,
 	Platform,
 	TouchableOpacity,
+	Button
 } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
@@ -17,12 +15,17 @@ import { SIZES, COLORS } from "../../constants/theme";
 import { useFonts } from "expo-font";
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
-// import Logo from "../../../assets/images/render.png";
+import Spinner from "react-native-loading-spinner-overlay/lib";
+
+
+import { AuthContext } from "../../context/AuthContext";
 
 const SignInScreen = () => {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
+	const [userInfo, setUserInfo] = useState({});
+	const [username, setUsername] = useState(null);
+	const [password, setPassword] = useState(null);
+
+	const {login, isLoading} = useContext(AuthContext)
 
 	const navigation = useNavigation();
 
@@ -44,44 +47,12 @@ const SignInScreen = () => {
 	const onChangePasswordHandler = (password) => {
 		setPassword(password);
 	};
-
-  const onSubmitFormHandler = async (event) => {
-    if (!username.trim() || !password.trim()) {
-      alert("Username or Password is invalid");
-      return;
-    }
-    setIsLoading(true);
-    try {
-      const response = await axios.post(`${API_URL}/login/`, {
-			username,
-			password,
-		},
-		{headers: {'Content-Type': 'application/json'}}
-		 );
-      if (response.status === 200 || response.status === 201) {
-        alert('Logged in Successfully');
-        setIsLoading(false);
-        setUsername('');
-        setPassword('');
-        navigation.navigate("HomeScreen");
-      } else {
-        throw new Error(response.status);
-      }
-    } catch (error) {
-      alert('Login failed');
-      setIsLoading(false);
-    }
-  };
-
+	
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
+			<Spinner visible={ isLoading}/>
 			<View style={styles.header}>
-				{/* <Image source={Logo} style={[styles.logo]} resizeMode="contain" /> */}
-				{isLoading ? (
-					<Text style={styles.formHeading}> Logging in User </Text>
-				) : (
-					<Text style={styles.formHeading}>Welcome, Sign in</Text>
-				)}
+				<Text style={styles.formHeading}>Welcome, Sign in</Text>
 			</View>
 			<View style={styles.wrapper}>
 				<TextInput
@@ -89,8 +60,7 @@ const SignInScreen = () => {
 					placeholderTextColor="#000"
 					style={styles.input}
 					value={username}
-					editable={!isLoading}
-					onChangeText={onChangeUsernameHandler}
+					onChangeText={text => setUsername(text)}
 				/>
 			</View>
 			<View style={styles.wrapper}>
@@ -99,18 +69,18 @@ const SignInScreen = () => {
 					placeholderTextColor="#000"
 					style={styles.input}
 					value={password}
-					editable={!isLoading}
 					secureTextEntry={true}
-					onChangeText={onChangePasswordHandler}
+					onChangeText={text => setPassword(text)}
 				/>
 			</View>
 			<View>
-				<CustomButton
+				{/* <CustomButton
 					text="Login"
-					onPress={onSubmitFormHandler}
+					onPress={login(username, password)}
 					style={styles.submitButton}
-					disabled={isLoading}
-				/>
+				/> */}
+				{/* I commented out the custom button because it was giving errors.. */}
+					<Button title="Login" onPress={() => login(username,password)} style={styles.submitButton}/>
 				<TouchableOpacity onPress={onSignUpPress}>
 					<Text style={styles.text}>
 						Don't have an account?
@@ -135,8 +105,9 @@ const styles = StyleSheet.create({
 		marginBottom: 30,
 		fontFamily: "Poppins_bold",
 		color: COLORS.primary,
-		// fontWeight: "700",
-		// alignSelf: 'center'
+		justifyContent: "center",
+		alignItems: "center",
+		fontWeight: "bold",
 	},
 	formHeading: {
 		color: "#000",
