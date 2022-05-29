@@ -9,10 +9,10 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
-import { COLORS, SIZES } from "../../constants/theme";
+import { COLORS, SIZES } from "../constants/theme";
 import { useFonts } from "expo-font";
 // import * as Font from "expo-font";
-import StartUpScreen from "../StartUpScreen";
+import StartUpScreen from "./StartUpScreen";
 
 const slides = [
 	{
@@ -20,38 +20,38 @@ const slides = [
 		title: "Platform For Job Seekers And Hirers",
 		description:
 			"Your one stop platform to explore available jobs or find a perfect candidate for a task.",
-		image: require("../../../assets/images/slides/onboard1.png"),
+		image: require("../../assets/images/slides/onboard1.png"),
 	},
 	{
 		id: 2,
 		title: "Available Jobs Near You",
 		description:
 			"Filter your search according to your preference to discover available jobs near you.",
-		image: require("../../../assets/images/slides/onboard2.png"),
+		image: require("../../assets/images/slides/onboard2.png"),
 	},
 	{
 		id: 3,
 		title: "Post Jobs",
 		description:
 			"Upload and broadcast jobs to millions of labourers on our platform with just a single click.",
-		image: require("../../../assets/images/slides/onboard3.png"),
+		image: require("../../assets/images/slides/onboard3.png"),
 	},
 	{
 		id: 4,
 		title: "Receive Payment",
 		description:
 			"Receive payments and cashout anytime anywhere from your online wallet after completing a job",
-		image: require("../../../assets/images/slides/onboard4.png"),
+		image: require("../../assets/images/slides/onboard4.png"),
 	},
 ];
 
 const OnBoardScreen = () => {
 	const [loaded] = useFonts({
-		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
-		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
-		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
-		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
-		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
+		Poppins_black: require("../../assets/fonts/Poppins-Black.ttf"),
+		Poppins_blacki: require("../../assets/fonts/Poppins-BlackItalic.ttf"),
+		Poppins_bold: require("../../assets/fonts/Poppins-Bold.ttf"),
+		Poppins_light: require("../../assets/fonts/Poppins-Light.ttf"),
+		Poppins_regular: require("../../assets/fonts/Poppins-Regular.ttf"),
 	});
 
 	const [showHomePage, setShowHomePage] = useState(false);
@@ -112,16 +112,15 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	container: {
-		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
 		padding: 15,
+		alignItems: "center",
+		justifyContent: "center",
 	},
 	image: {
 		width: SIZES.width,
 		height: 250,
 		marginBottom: 20,
-		padding: 10,
+		padding: 20,
 	},
 	head: {
 		fontSize: SIZES.h1,

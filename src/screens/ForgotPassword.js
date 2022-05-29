@@ -8,11 +8,11 @@ import {
 	TouchableOpacity,
 } from "react-native";
 import React, { useContext, useState } from "react";
-import Logo from "../../../assets/images/render.png";
-import CustomButton from "../../components/CustomButton";
-import CustomInput from "../../components/CustomInput";
+import Logo from "../../assets/images/render.png";
+import CustomButton from "../components/CustomButton";
+import CustomInput from "../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 const ForgotPassword = () => {
 	const navigation = useNavigation();

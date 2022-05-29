@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
+<<<<<<< Updated upstream:src/screens/SignUpScreen/SignUpScreen.js
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import { SIZES, COLORS } from "../../constants/theme";
@@ -19,6 +20,16 @@ import { useFonts } from "expo-font";
 
 import { AuthContext } from "../../context/AuthContext";
 import Spinner from "react-native-loading-spinner-overlay/lib";
+=======
+// import Logo from "../../../assets/images/render.png";
+// import Logo from "../../../assets/images/render.png";
+import CustomButton from "../components/CustomButton";
+import CustomInput from "../components/CustomInput";
+import { SIZES, COLORS } from "../constants/theme";
+import { useFonts } from "expo-font";
+
+import { API_URL } from "../components/configurations/config";
+>>>>>>> Stashed changes:src/screens/SignUpScreen.js
 
 const SignUpScreen = () => {
 	const [name, setName] = useState(null);
@@ -30,11 +41,11 @@ const SignUpScreen = () => {
 	const navigation = useNavigation();
 
 	const [loaded] = useFonts({
-		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
-		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
-		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
-		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
-		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
+		Poppins_black: require("../../assets/fonts/Poppins-Black.ttf"),
+		Poppins_blacki: require("../../assets/fonts/Poppins-BlackItalic.ttf"),
+		Poppins_bold: require("../../assets/fonts/Poppins-Bold.ttf"),
+		Poppins_light: require("../../assets/fonts/Poppins-Light.ttf"),
+		Poppins_regular: require("../../assets/fonts/Poppins-Regular.ttf"),
 	});
 
 	const onLoginPress = () => {

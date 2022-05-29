@@ -1,4 +1,11 @@
+<<<<<<< Updated upstream:src/screens/SignInScreen/SignInScreen.js
 import React, { useState, useContext } from "react";
+=======
+import axios from "axios";
+import { API_URL } from "../components/configurations/config";
+
+import React, { useState } from "react";
+>>>>>>> Stashed changes:src/screens/SignInScreen.js
 import {
 	StyleSheet,
 	Text,
@@ -11,14 +18,20 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
-import { SIZES, COLORS } from "../../constants/theme";
+import { SIZES, COLORS } from "../constants/theme";
 import { useFonts } from "expo-font";
+<<<<<<< Updated upstream:src/screens/SignInScreen/SignInScreen.js
 import CustomButton from "../../components/CustomButton";
 import CustomInput from "../../components/CustomInput";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 
 
 import { AuthContext } from "../../context/AuthContext";
+=======
+import CustomButton from "../components/CustomButton";
+import CustomInput from "../components/CustomInput";
+// import Logo from "../../../assets/images/render.png";
+>>>>>>> Stashed changes:src/screens/SignInScreen.js
 
 const SignInScreen = () => {
 	const [userInfo, setUserInfo] = useState({});
@@ -30,11 +43,11 @@ const SignInScreen = () => {
 	const navigation = useNavigation();
 
 	const [loaded] = useFonts({
-		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
-		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
-		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
-		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
-		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
+		Poppins_black: require("../../assets/fonts/Poppins-Black.ttf"),
+		Poppins_blacki: require("../../assets/fonts/Poppins-BlackItalic.ttf"),
+		Poppins_bold: require("../../assets/fonts/Poppins-Bold.ttf"),
+		Poppins_light: require("../../assets/fonts/Poppins-Light.ttf"),
+		Poppins_regular: require("../../assets/fonts/Poppins-Regular.ttf"),
 	});
 
 	const onSignUpPress = () => {
@@ -47,7 +60,41 @@ const SignInScreen = () => {
 	const onChangePasswordHandler = (password) => {
 		setPassword(password);
 	};
+<<<<<<< Updated upstream:src/screens/SignInScreen/SignInScreen.js
 	
+=======
+
+	const onSubmitFormHandler = async (event) => {
+		if (!username.trim() || !password.trim()) {
+			alert("Username or Password is invalid");
+			return;
+		}
+		setIsLoading(true);
+		try {
+			const response = await axios.post(
+				`${API_URL}/login/`,
+				{
+					username,
+					password,
+				},
+				{ headers: { "Content-Type": "application/json" } }
+			);
+			if (response.status === 200 || response.status === 201) {
+				alert("Logged in Successfully");
+				setIsLoading(false);
+				setUsername("");
+				setPassword("");
+				navigation.navigate("HomeScreen");
+			} else {
+				throw new Error(response.status);
+			}
+		} catch (error) {
+			alert("Login failed");
+			setIsLoading(false);
+		}
+	};
+
+>>>>>>> Stashed changes:src/screens/SignInScreen.js
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
 			<Spinner visible={ isLoading}/>

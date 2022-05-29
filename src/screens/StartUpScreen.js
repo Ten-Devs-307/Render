@@ -8,22 +8,22 @@ import {
 	useWindowDimensions,
 } from "react-native";
 import React from "react";
-import Logo from "../../../assets/images/get-things-done.png";
-import CustomButton from "../../components/CustomButton";
-import CustomInput from "../../components/CustomInput";
+import Logo from "../../assets/images/get-things-done.png";
+import CustomButton from "../components/CustomButton";
+import CustomInput from "../components/CustomInput";
 import { useNavigation } from "@react-navigation/native";
-import { COLORS, SIZES } from "../../constants/theme";
+import { COLORS, SIZES } from "../constants/theme";
 import { useFonts } from "expo-font";
 
 const SignInScreen = () => {
 	const navigation = useNavigation();
 
 	const [loaded] = useFonts({
-		Poppins_black: require("../../../assets/fonts/Poppins-Black.ttf"),
-		Poppins_blacki: require("../../../assets/fonts/Poppins-BlackItalic.ttf"),
-		Poppins_bold: require("../../../assets/fonts/Poppins-Bold.ttf"),
-		Poppins_light: require("../../../assets/fonts/Poppins-Light.ttf"),
-		Poppins_regular: require("../../../assets/fonts/Poppins-Regular.ttf"),
+		Poppins_black: require("../../assets/fonts/Poppins-Black.ttf"),
+		Poppins_blacki: require("../../assets/fonts/Poppins-BlackItalic.ttf"),
+		Poppins_bold: require("../../assets/fonts/Poppins-Bold.ttf"),
+		Poppins_light: require("../../assets/fonts/Poppins-Light.ttf"),
+		Poppins_regular: require("../../assets/fonts/Poppins-Regular.ttf"),
 	});
 
 	const onSignUpPress = () => {

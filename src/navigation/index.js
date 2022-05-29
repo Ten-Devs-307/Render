@@ -2,15 +2,15 @@ import { View, Text } from "react-native";
 import React, { useContext} from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SignInScreen from "../screens/SignInScreen/SignInScreen";
-import SignUpScreen from "../screens/SignUpScreen/SignUpScreen";
-import OnBoardScreen from "../screens/OnBoardScreen/OnBoardScreen";
-import ForgotPassword from "../screens/ForgotPassword/ForgotPassword";
+import SignInScreen from "../screens/SignInScreen";
+import SignUpScreen from "../screens/SignUpScreen";
+import OnBoardScreen from "../screens/OnBoardScreen";
+import ForgotPassword from "../screens/ForgotPassword";
 import StartUpScreen from "../screens/StartUpScreen";
-import UserProfile from "../screens/UserProfile/UserProfile";
+import UserProfile from "../screens/UserProfile";
 import HomeScreen from "../screens/HomeScreen";
 import JobDetails from "../screens/JobDetails";
-import SplashScreen from "../screens/SplashScreen/SplashScreen";
+import SplashScreen from "../screens/SplashScreen";
 
 import { AuthContext } from "../context/AuthContext";
 const Stack = createNativeStackNavigator();
@@ -20,6 +20,7 @@ const Navigation = () => {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator
+<<<<<<< Updated upstream
 				screenOptions={{ headerShown: false }}>
 				{userInfo.token ? (
 					<>
@@ -29,6 +30,12 @@ const Navigation = () => {
 					</>
 				) : (
 						<>	
+=======
+				screenOptions={{ headerShown: false }}
+				// initialRouteName={OnBoardScreen}
+			>
+				<Stack.Screen name="Splash" component={SplashScreen} />
+>>>>>>> Stashed changes
 				<Stack.Screen name="OnBoard" component={OnBoardScreen} />
 				<Stack.Screen name="StartUp" component={StartUpScreen} />
 				<Stack.Screen name="SignIn" component={SignInScreen} />

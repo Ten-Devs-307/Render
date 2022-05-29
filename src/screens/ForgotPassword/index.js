@@ -1,1 +1,0 @@
-import ForgotPassword from "./ForgotPassword";
