@@ -17,41 +17,41 @@ const profile_img = "https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-522355
 
 const UserProfile = () => {
 	const {userInfo} = useContext(AuthContext)
-	const [userData, setUserData] = useState([]);
+	// const [userData, setUserData] = useState([]);
 	
 
-	useEffect(async () => {
-		axios.get(`${API_URL}/user-profile/`,
-		{
-        headers:
-			{
-				'Content-Type': 'application/json',
-				'Authorization': `Token ${userInfo.token}`}
-			}).then(res => {
-				let userObject = res.data;
-				setUserData(userObject);
-				console.log(userObject)
-				return userData;
-			}).catch(e => {
-				console.log(e);
-			});
-	}, []);
+	// useEffect(async () => {
+	// 	axios.get(`${API_URL}/user-profile/`,
+	// 	{
+   //      headers:
+	// 		{
+	// 			'Content-Type': 'application/json',
+	// 			'Authorization': `Token ${userInfo.token}`}
+	// 		}).then(res => {
+	// 			let userObject = res.data;
+	// 			setUserData(userObject);
+	// 			console.log(userObject)
+	// 			return userData;
+	// 		}).catch(e => {
+	// 			console.log(e);
+	// 		});
+	// }, []);
 
-	const getUserDetailsWithFetch = async () => {
-		axios.get(`${API_URL}/user-profile/`,
-		{
-        headers:
-			{
-				'Content-Type': 'application/json',
-				'Authorization': `Token ${userInfo.token}`}
-			}).then(res => {
-				let userObject = res.data;
-				setUserData(userObject);
-				return userData;
-			}).catch(e => {
-				console.log(e);
-			});
-	};
+	// const getUserDetailsWithFetch = async () => {
+	// 	axios.get(`${API_URL}/user-profile/`,
+	// 	{
+   //      headers:
+	// 		{
+	// 			'Content-Type': 'application/json',
+	// 			'Authorization': `Token ${userInfo.token}`}
+	// 		}).then(res => {
+	// 			let userObject = res.data;
+	// 			setUserData(userObject);
+	// 			return userData;
+	// 		}).catch(e => {
+	// 			console.log(e);
+	// 		});
+	// };
 
 	return (
 		<View style={styles.root}>
@@ -60,7 +60,7 @@ const UserProfile = () => {
 
 			{/* Profile Name */}
 			<View style={styles.prof_name_grp}>
-				<Text style={styles.profile_name}>{userData.user.name}</Text>
+				<Text style={styles.profile_name}>Stigar</Text>
 				<MaterialCommunityIcons name="check-decagram" size={20} color="black" />
 			</View>
 
