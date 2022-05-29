@@ -12,31 +12,20 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
-<<<<<<< Updated upstream:src/screens/SignUpScreen/SignUpScreen.js
-import CustomButton from "../../components/CustomButton";
-import CustomInput from "../../components/CustomInput";
-import { SIZES, COLORS } from "../../constants/theme";
-import { useFonts } from "expo-font";
-
-import { AuthContext } from "../../context/AuthContext";
-import Spinner from "react-native-loading-spinner-overlay/lib";
-=======
-// import Logo from "../../../assets/images/render.png";
-// import Logo from "../../../assets/images/render.png";
 import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
 import { SIZES, COLORS } from "../constants/theme";
 import { useFonts } from "expo-font";
 
-import { API_URL } from "../components/configurations/config";
->>>>>>> Stashed changes:src/screens/SignUpScreen.js
+import { AuthContext } from "../context/AuthContext";
+import Spinner from "react-native-loading-spinner-overlay/lib";
 
 const SignUpScreen = () => {
 	const [name, setName] = useState(null);
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
 
-	const {register, isLoading} = useContext(AuthContext)
+	const { register, isLoading } = useContext(AuthContext);
 
 	const navigation = useNavigation();
 
@@ -65,7 +54,7 @@ const SignUpScreen = () => {
 
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
-			<Spinner visible={ isLoading}/>
+			<Spinner visible={isLoading} />
 			<View>
 				<View style={styles.header}>
 					<Text style={styles.formHeading}>Create a new account</Text>
@@ -76,7 +65,7 @@ const SignUpScreen = () => {
 						placeholderTextColor="#000"
 						style={styles.input}
 						value={email}
-						onChangeText={text => setEmail(text)}
+						onChangeText={(text) => setEmail(text)}
 					/>
 				</View>
 				<View style={styles.wrapper}>
@@ -85,7 +74,7 @@ const SignUpScreen = () => {
 						placeholderTextColor="#000"
 						style={styles.input}
 						value={name}
-						onChangeText={text => setName(text)}
+						onChangeText={(text) => setName(text)}
 					/>
 				</View>
 
@@ -96,7 +85,7 @@ const SignUpScreen = () => {
 						style={styles.input}
 						value={password}
 						secureTextEntry={true}
-						onChangeText={text=>setPassword(text)}
+						onChangeText={(text) => setPassword(text)}
 					/>
 				</View>
 				<View>
@@ -106,13 +95,18 @@ const SignUpScreen = () => {
 						style={styles.submitButton}
 					/> */}
 					{/* I commented out the custom button because it was giving errors.. */}
-					<Button title="Register" onPress={() => register(email,name,password)} style={styles.submitButton}/>
+					<Button
+						title="Register"
+						onPress={() => register(email, name, password)}
+						style={styles.submitButton}
+					/>
 				</View>
 				<Text style={styles.text}>
 					By signing up, you agree to our Terms and Service and Privacy Policy.
 				</Text>
 				<TouchableOpacity onPress={onLoginPress}>
-					<Text style={styles.text}>Have an account?
+					<Text style={styles.text}>
+						Have an account?
 						<Text style={styles.login}>Log In{""}</Text>
 					</Text>
 				</TouchableOpacity>
@@ -133,14 +127,14 @@ const styles = StyleSheet.create({
 		marginBottom: 30,
 		fontFamily: "Poppins_bold",
 		color: COLORS.primary,
-    justifyContent: "center",
-    alignItems: "center",
+		justifyContent: "center",
+		alignItems: "center",
 		// fontWeight: "700",
 		// alignSelf: 'center'
 	},
 	formHeading: {
 		// color: "#000",
-    fontSize: SIZES.h3,
+		fontSize: SIZES.h3,
 	},
 	wrapper: {
 		// backgroundColor: "white",

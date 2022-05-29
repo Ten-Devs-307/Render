@@ -1,11 +1,4 @@
-<<<<<<< Updated upstream:src/screens/SignInScreen/SignInScreen.js
 import React, { useState, useContext } from "react";
-=======
-import axios from "axios";
-import { API_URL } from "../components/configurations/config";
-
-import React, { useState } from "react";
->>>>>>> Stashed changes:src/screens/SignInScreen.js
 import {
 	StyleSheet,
 	Text,
@@ -14,31 +7,24 @@ import {
 	View,
 	Platform,
 	TouchableOpacity,
-	Button
+	Button,
 } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
 import { SIZES, COLORS } from "../constants/theme";
 import { useFonts } from "expo-font";
-<<<<<<< Updated upstream:src/screens/SignInScreen/SignInScreen.js
-import CustomButton from "../../components/CustomButton";
-import CustomInput from "../../components/CustomInput";
-import Spinner from "react-native-loading-spinner-overlay/lib";
-
-
-import { AuthContext } from "../../context/AuthContext";
-=======
 import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
-// import Logo from "../../../assets/images/render.png";
->>>>>>> Stashed changes:src/screens/SignInScreen.js
+import Spinner from "react-native-loading-spinner-overlay/lib";
+
+import { AuthContext } from "../context/AuthContext";
 
 const SignInScreen = () => {
 	const [userInfo, setUserInfo] = useState({});
 	const [username, setUsername] = useState(null);
 	const [password, setPassword] = useState(null);
 
-	const {login, isLoading} = useContext(AuthContext)
+	const { login, isLoading } = useContext(AuthContext);
 
 	const navigation = useNavigation();
 
@@ -60,9 +46,6 @@ const SignInScreen = () => {
 	const onChangePasswordHandler = (password) => {
 		setPassword(password);
 	};
-<<<<<<< Updated upstream:src/screens/SignInScreen/SignInScreen.js
-	
-=======
 
 	const onSubmitFormHandler = async (event) => {
 		if (!username.trim() || !password.trim()) {
@@ -94,10 +77,9 @@ const SignInScreen = () => {
 		}
 	};
 
->>>>>>> Stashed changes:src/screens/SignInScreen.js
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
-			<Spinner visible={ isLoading}/>
+			<Spinner visible={isLoading} />
 			<View style={styles.header}>
 				<Text style={styles.formHeading}>Welcome, Sign in</Text>
 			</View>
@@ -107,7 +89,7 @@ const SignInScreen = () => {
 					placeholderTextColor="#000"
 					style={styles.input}
 					value={username}
-					onChangeText={text => setUsername(text)}
+					onChangeText={(text) => setUsername(text)}
 				/>
 			</View>
 			<View style={styles.wrapper}>
@@ -117,7 +99,7 @@ const SignInScreen = () => {
 					style={styles.input}
 					value={password}
 					secureTextEntry={true}
-					onChangeText={text => setPassword(text)}
+					onChangeText={(text) => setPassword(text)}
 				/>
 			</View>
 			<View>
@@ -127,7 +109,11 @@ const SignInScreen = () => {
 					style={styles.submitButton}
 				/> */}
 				{/* I commented out the custom button because it was giving errors.. */}
-					<Button title="Login" onPress={() => login(username,password)} style={styles.submitButton}/>
+				<Button
+					title="Login"
+					onPress={() => login(username, password)}
+					style={styles.submitButton}
+				/>
 				<TouchableOpacity onPress={onSignUpPress}>
 					<Text style={styles.text}>
 						Don't have an account?

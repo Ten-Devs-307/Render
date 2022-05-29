@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignInScreen from "../screens/SignInScreen";
@@ -16,31 +16,23 @@ import { AuthContext } from "../context/AuthContext";
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
-	const {userInfo} = useContext(AuthContext);
+	const { userInfo } = useContext(AuthContext);
 	return (
 		<NavigationContainer>
-			<Stack.Navigator
-<<<<<<< Updated upstream
-				screenOptions={{ headerShown: false }}>
+			<Stack.Navigator screenOptions={{ headerShown: false }}>
 				{userInfo.token ? (
 					<>
-				<Stack.Screen name="HomeScreen" component={HomeScreen} />
-				<Stack.Screen name="UserProfile" component={UserProfile} />
-				<Stack.Screen name="JobDetails" component={JobDetails} />
+						<Stack.Screen name="HomeScreen" component={HomeScreen} />
+						<Stack.Screen name="UserProfile" component={UserProfile} />
+						<Stack.Screen name="JobDetails" component={JobDetails} />
 					</>
 				) : (
-						<>	
-=======
-				screenOptions={{ headerShown: false }}
-				// initialRouteName={OnBoardScreen}
-			>
-				<Stack.Screen name="Splash" component={SplashScreen} />
->>>>>>> Stashed changes
-				<Stack.Screen name="OnBoard" component={OnBoardScreen} />
-				<Stack.Screen name="StartUp" component={StartUpScreen} />
-				<Stack.Screen name="SignIn" component={SignInScreen} />
-				<Stack.Screen name="SignUp" component={SignUpScreen} />
-				<Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+					<>
+						<Stack.Screen name="OnBoard" component={OnBoardScreen} />
+						<Stack.Screen name="StartUp" component={StartUpScreen} />
+						<Stack.Screen name="SignIn" component={SignInScreen} />
+						<Stack.Screen name="SignUp" component={SignUpScreen} />
+						<Stack.Screen name="ForgotPassword" component={ForgotPassword} />
 					</>
 				)}
 			</Stack.Navigator>

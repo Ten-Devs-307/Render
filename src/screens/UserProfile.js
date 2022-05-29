@@ -6,24 +6,21 @@ import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import axios from "axios";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
+import { API_URL } from "../components/configurations/config";
 
-import {API_URL} from "../../components/configurations/config"
-
-const profile_img = "https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559_960_720.jpg";
-
-
+const profile_img =
+	"https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559_960_720.jpg";
 
 const UserProfile = () => {
-	const {userInfo} = useContext(AuthContext)
+	const { userInfo } = useContext(AuthContext);
 	// const [userData, setUserData] = useState([]);
-	
 
 	// useEffect(async () => {
 	// 	axios.get(`${API_URL}/user-profile/`,
 	// 	{
-   //      headers:
+	//      headers:
 	// 		{
 	// 			'Content-Type': 'application/json',
 	// 			'Authorization': `Token ${userInfo.token}`}
@@ -40,7 +37,7 @@ const UserProfile = () => {
 	// const getUserDetailsWithFetch = async () => {
 	// 	axios.get(`${API_URL}/user-profile/`,
 	// 	{
-   //      headers:
+	//      headers:
 	// 		{
 	// 			'Content-Type': 'application/json',
 	// 			'Authorization': `Token ${userInfo.token}`}

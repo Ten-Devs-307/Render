@@ -10,14 +10,18 @@ import {
 	Dimensions,
 	Pressable,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import CustomButton from "../components/CustomButton";
 import ListItem from "../components/ListItem";
 import { useNavigation } from "@react-navigation/native";
 import JobCategoriesList from "../components/job-categories/JobCategoriesList";
 import Icon from "react-native-vector-icons/MaterialIcons";
 const { width } = Dimensions.get("screen");
+
+import { AuthContext } from "../context/AuthContext";
 const HomeScreen = () => {
+	const { logout } = useContext(AuthContext);
+
 	const Card = () => {
 		return (
 			<View styles={{ marginBottom: 100 }}>
@@ -130,9 +134,11 @@ const HomeScreen = () => {
 						<Icon name="search" size={25} color={"grey"} />
 						<TextInput placeholder="Search address, City, Location, Agent name..." />
 					</View>
-					<View style={styles.sortButton}>
-						<Icon name="tune" size={25} color={"white"} />
-					</View>
+					<Pressable onPress={logout}>
+						<View style={styles.sortButton}>
+							<Icon name="tune" size={25} color={"white"} />
+						</View>
+					</Pressable>
 				</View>
 				{/* <ListServices /> */}
 				<JobCategoriesList />
