@@ -15,24 +15,24 @@ const profile_img =
 
 const UserProfile = () => {
 	const { userInfo } = useContext(AuthContext);
-	// const [userData, setUserData] = useState([]);
+	const [userData, setUserData] = useState([]);
 
-	// useEffect(async () => {
-	// 	axios.get(`${API_URL}/user-profile/`,
-	// 	{
-	//      headers:
-	// 		{
-	// 			'Content-Type': 'application/json',
-	// 			'Authorization': `Token ${userInfo.token}`}
-	// 		}).then(res => {
-	// 			let userObject = res.data;
-	// 			setUserData(userObject);
-	// 			console.log(userObject)
-	// 			return userData;
-	// 		}).catch(e => {
-	// 			console.log(e);
-	// 		});
-	// }, []);
+	useEffect(async () => {
+		axios.get(`${API_URL}/user-profile/`,
+		{
+	     headers:
+			{
+				'Content-Type': 'application/json',
+				'Authorization': `Token ${userInfo.token}`}
+			}).then(res => {
+				let userObject = res.data;
+				setUserData(userObject);
+				console.log(userObject)
+				return userData;
+			}).catch(e => {
+				console.log(e);
+			});
+	}, []);
 
 	// const getUserDetailsWithFetch = async () => {
 	// 	axios.get(`${API_URL}/user-profile/`,

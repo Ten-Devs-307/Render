@@ -4,7 +4,6 @@ import { ScrollView } from 'react-native';
 import ListItem from '../../components/ListItem';
 import { API_URL, BASE_URL } from '../../components/configurations/config';
 
-const img = "http://www.renderjobs.com/media/category/DF7BA84C-E714-4532-B934-872A3E764A7C.jpeg";
 export default class JobCategoriesList extends React.Component {
 
   state = {
