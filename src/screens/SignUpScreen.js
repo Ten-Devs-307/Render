@@ -16,6 +16,7 @@ import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
 import { SIZES, COLORS } from "../constants/theme";
 import { useFonts } from "expo-font";
+import SelectDropdown from "react-native-select-dropdown";
 
 import { AuthContext } from "../context/AuthContext";
 import Spinner from "react-native-loading-spinner-overlay/lib";
@@ -24,6 +25,8 @@ const SignUpScreen = () => {
 	const [name, setName] = useState(null);
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
+	const [number, setNumber] = useState(null);
+	const [role, setRole] = useState(null);
 
 	const { register, isLoading } = useContext(AuthContext);
 
@@ -36,6 +39,8 @@ const SignUpScreen = () => {
 		Poppins_light: require("../../assets/fonts/Poppins-Light.ttf"),
 		Poppins_regular: require("../../assets/fonts/Poppins-Regular.ttf"),
 	});
+
+	const countries = ["Labourer", "Customer"];
 
 	const onLoginPress = () => {
 		navigation.navigate("SignIn");
@@ -77,7 +82,6 @@ const SignUpScreen = () => {
 						onChangeText={(text) => setName(text)}
 					/>
 				</View>
-
 				<View style={styles.wrapper}>
 					<TextInput
 						placeholder="Password"
@@ -88,6 +92,53 @@ const SignUpScreen = () => {
 						onChangeText={(text) => setPassword(text)}
 					/>
 				</View>
+
+				{/* Select Role */}
+
+				<View
+					style={{
+						flexDirection: "row",
+						// justifyContent: "center",
+						flex: -1,
+						alignItems: "center",
+						marginBottom: 15,
+					}}
+				>
+					<Text style={{ fontSize: SIZES.h3, marginRight: 15 }}>
+						Select your role
+					</Text>
+					<SelectDropdown
+						style={{ width: "50%", borderColor: "#000" }}
+						data={countries}
+						onSelect={(selectedItem, index) => {
+							console.log(selectedItem, index);
+						}}
+						buttonTextAfterSelection={(selectedItem, index) => {
+							// text represented after item is selected
+							// if data array is an array of objects then return selectedItem.property to render after item is selected
+							return selectedItem;
+						}}
+						rowTextForSelection={(item, index) => {
+							// text represented for each item in dropdown
+							// if data array is an array of objects then return item.property to represent item in dropdown
+							return item;
+						}}
+					/>
+				</View>
+
+				{/* Phone Number */}
+				<View style={styles.wrapper}>
+					<TextInput
+						placeholder="Phone Number"
+						placeholderTextColor="#000"
+						style={styles.input}
+						value={number}
+						onChangeText={(number) => setNumber(number)}
+						maxLength={10}
+					/>
+				</View>
+
+				{/* Custom Button */}
 				<View>
 					{/* <CustomButton
 						text="Register"

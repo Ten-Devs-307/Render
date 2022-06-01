@@ -112,9 +112,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	container: {
-		padding: 15,
-		alignItems: "center",
+		flex: 1,
 		justifyContent: "center",
+		paddingHorizontal: 10,
 	},
 	image: {
 		width: SIZES.width,
