@@ -11,12 +11,15 @@ import UserProfile from "../screens/UserProfile";
 import HomeScreen from "../screens/HomeScreen";
 import JobDetails from "../screens/JobDetails";
 import SplashScreen from "../screens/SplashScreen";
+import TabsScreen from "../screens/TabsScreen";
 
 import { AuthContext } from "../context/AuthContext";
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
 	const { userInfo } = useContext(AuthContext);
+
 	return (
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{ headerShown: false }}>

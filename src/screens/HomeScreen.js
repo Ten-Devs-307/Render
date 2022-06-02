@@ -77,7 +77,6 @@ const HomeScreen = () => {
 		);
 	};
 
-
 	const onUserPress = () => {
 		navigation.navigate("JobDetails");
 	};
@@ -182,7 +181,6 @@ const styles = StyleSheet.create({
 		height: 130,
 		borderRadius: 15,
 	},
-	
 });
 
 export default HomeScreen;
