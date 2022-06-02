@@ -18,9 +18,9 @@ import {
 import Icon from "react-native-vector-icons/MaterialIcons";
 import CustomButton from "../components/CustomButton";
 
-export default function JobDetails() {
-	const navigation = useNavigation();
-
+function JobDetails({route, navigation}) {
+	// const navigation = useNavigation();
+	const { job } = route.params;
 	const onBackPress = () => {
 		navigation.navigate("HomeScreen");
 	};
@@ -51,7 +51,7 @@ export default function JobDetails() {
 				<Text style={{ marginBottom: "2%", fontWeight: "bold" }}>
 					labourer job
 				</Text>
-				<Text style={{ marginBottom: "10%" }}>Job ID:108781</Text>
+				<Text style={{ marginBottom: "10%" }}>Job ID:{job.job_id}</Text>
 				<View style={styles.profile}>
 					<View style={styles.profile_pic}></View>
 					<View
@@ -155,3 +155,5 @@ const styles = StyleSheet.create({
 		height: "25%",
 	},
 });
+
+export default JobDetails;
