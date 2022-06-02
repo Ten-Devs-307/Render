@@ -28,9 +28,9 @@ const Navigation = () => {
 					</>
 				) : (
 					<>
-						{/* <Stack.Screen name="OnBoard" component={OnBoardScreen} /> */}
-						{/* <Stack.Screen name="StartUp" component={StartUpScreen} /> */}
-						{/* <Stack.Screen name="SignIn" component={SignInScreen} /> */}
+						<Stack.Screen name="OnBoard" component={OnBoardScreen} />
+						<Stack.Screen name="StartUp" component={StartUpScreen} />
+						<Stack.Screen name="SignIn" component={SignInScreen} />
 						<Stack.Screen name="SignUp" component={SignUpScreen} />
 						<Stack.Screen name="ForgotPassword" component={ForgotPassword} />
 					</>

@@ -7,11 +7,19 @@ import {
 	Dimensions,
 } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
+
 const { width } = Dimensions.get("screen");
 
 const ListJobs = ({ type, onPress, location, name, charge }) => {
 	const profile_img =
 		"https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559_960_720.jpg";
+
+	const navigation = useNavigation();
+
+	const onBackPress = () => {
+		navigation.navigate("SignIn");
+	};
 
 	const onJobsPress = () => {
 		navigation.navigate("JobDetails");

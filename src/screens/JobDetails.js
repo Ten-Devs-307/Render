@@ -20,6 +20,11 @@ import CustomButton from "../components/CustomButton";
 
 export default function JobDetails() {
 	const navigation = useNavigation();
+
+	const onBackPress = () => {
+		navigation.navigate("HomeScreen");
+	};
+
 	return (
 		<SafeAreaView style={{ backgroundColor: "#F8EDED" }}>
 			<View style={styles.main}>
@@ -31,7 +36,12 @@ export default function JobDetails() {
 						marginBottom: "10%",
 					}}
 				>
-					<Ionicons name="chevron-back" size={30} color="black" />
+					<Ionicons
+						name="chevron-back"
+						size={30}
+						color="black"
+						onPress={onBackPress}
+					/>
 					<View
 						style={{ flexDirection: "row", justifyContent: "center", flex: 1 }}
 					>
