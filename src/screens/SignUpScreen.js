@@ -26,7 +26,7 @@ const SignUpScreen = () => {
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
 	const [number, setNumber] = useState(null);
-	const [role, setRole] = useState(null);
+	const [role, setRole] = useState('');
 
 	const { register, isLoading } = useContext(AuthContext);
 
@@ -40,7 +40,7 @@ const SignUpScreen = () => {
 		Poppins_regular: require("../../assets/fonts/Poppins-Regular.ttf"),
 	});
 
-	const countries = ["Labourer", "Customer"];
+	const clientType = ["Labourer", "Customer"];
 
 	const onLoginPress = () => {
 		navigation.navigate("SignIn");
@@ -109,9 +109,11 @@ const SignUpScreen = () => {
 					</Text>
 					<SelectDropdown
 						style={{ width: "50%", borderColor: "#000" }}
-						data={countries}
+						data={clientType}
 						onSelect={(selectedItem, index) => {
-							console.log(selectedItem, index);
+							// console.log(selectedItem, index);
+							setRole(selectedItem);
+							console.log('your role is: '+role);
 						}}
 						buttonTextAfterSelection={(selectedItem, index) => {
 							// text represented after item is selected

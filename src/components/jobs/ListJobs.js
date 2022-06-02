@@ -3,13 +3,13 @@ import React from 'react'
 const { width } = Dimensions.get('screen');
 
 const ListJobs = ({ type, onPress, location, name, charge }) => {
-   const profile_img =
-		"https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559_960_720.jpg";
+   // const profile_img =
+		// "https://cdn.pixabay.com/photo/2020/05/26/15/42/eagle-5223559_960_720.jpg";
    return (
       <TouchableOpacity onPress={onPress}>
 				<View style={styles.card}>
 					<View style={{ flexDirection: "row", justifyContent: "center" }}>
-						<Image source={{ uri: profile_img }} style={styles.profileImage} />
+						{/* <Image source={{ uri:  }} style={styles.profileImage} /> */}
 						<View style={{ marginLeft: 30, marginVertical: 15 }}>
 							<Text style={styles.service_name}>{name}</Text>
 							<Text style={styles.service_location}>{location}</Text>

@@ -47,7 +47,7 @@ const HomeScreen = () => {
 
 	const ListCategories = () => {
 		const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
-		const CategoriesList = ["Recommended", "Popular", "Nearest"];
+		const CategoriesList = ["Jobs"];
 		return (
 			<View
 				style={{

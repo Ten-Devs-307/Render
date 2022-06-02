@@ -15,7 +15,11 @@ export const AuthProvider = ({ children }) => {
     axios.post(`${API_URL}/sign-up/`,
         { email, 
           name, 
-          password,},
+          password,
+          phone,
+          is_customer,
+          is_labourer,
+        },
       {
         headers:
           { 'Content-Type': 'application/json' }
