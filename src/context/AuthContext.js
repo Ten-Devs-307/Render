@@ -7,18 +7,22 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({});
+  const [userProfile, setUserProfile] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false);
+  const [isCustomer, setIsCustomer] = useState(false);
+  const [isLabourer, setIsLabourer] = useState(false);
   
-  const register = (email, name, password) => {
+  const register = (email, name, password,role) => {
     setIsLoading(false);
-    axios.post(`${API_URL}/sign-up/`,
+    if (role === 'Customer') {
+      setIsCustomer(true);
+      axios.post(`${API_URL}/sign-up/`,
         { email, 
           name, 
           password,
-          phone,
-          is_customer,
-          is_labourer,
+          is_customer: isCustomer,
+          is_labourer: isLabourer,
         },
       {
         headers:
@@ -37,6 +41,35 @@ export const AuthProvider = ({ children }) => {
           console.log(`${e}`);
           }
         );
+    }
+    else if (role === 'Labourer') {
+      setIsLabourer(true);
+      axios.post(`${API_URL}/register-labourer/`,
+        { email, 
+          name, 
+          password,
+          is_customer: isCustomer,
+          is_labourer: isLabourer,
+        },
+      {
+        headers:
+          { 'Content-Type': 'application/json' }
+      }
+        ).then(res => {
+          let userInfo = res.data;
+          setUserInfo(userInfo);
+          AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+          setIsLoading(false); 
+          
+      }).catch(
+        e => {
+          alert('Unable to register. Try again later.');
+          setIsLoading(false);
+          console.log(`${e}`);
+          }
+        );
+    }
+    
   };
   
   const login = (username, password) => {
@@ -80,6 +113,22 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  getUserprofile = () => {
+    axios.get(`${API_URL}/user-profile/`,
+		{
+	     headers:
+			{
+				'Content-Type': 'application/json',
+				'Authorization': `Token ${userInfo.token}`}
+			}).then(res => {
+				let userObject = res.data;
+				setUserProfile({userObject});
+				console.log(userData)
+			}).catch(e => {
+				console.log(e);
+			});
+  }
+
   const isLoggedIn = async () => {
     try {
       setSplashLoading(true);
@@ -98,7 +147,7 @@ export const AuthProvider = ({ children }) => {
   }
   
    return(
-      <AuthContext.Provider value={{register,login,logout,userInfo, isLoading, splashLoading}}>
+      <AuthContext.Provider value={{register,login,logout,userInfo, isLoading, splashLoading, userProfile}}>
          {children}
       </AuthContext.Provider>
    );
