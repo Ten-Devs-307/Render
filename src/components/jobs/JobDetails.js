@@ -16,11 +16,11 @@ import {
 	MaterialIcons,
 } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import CustomButton from "../components/CustomButton";
+import CustomButton from "../CustomButton";
 
-function JobDetails({route, navigation}) {
-	// const navigation = useNavigation();
-	const { job } = route.params;
+const JobDetails = ({ navigation, route }) => {
+	const job = route.params;
+
 	const onBackPress = () => {
 		navigation.navigate("HomeScreen");
 	};
@@ -51,7 +51,7 @@ function JobDetails({route, navigation}) {
 				<Text style={{ marginBottom: "2%", fontWeight: "bold" }}>
 					labourer job
 				</Text>
-				<Text style={{ marginBottom: "10%" }}>Job ID:{job.job_id}</Text>
+				<Text style={{ marginBottom: "10%" }}>Job ID: 12345</Text>
 				<View style={styles.profile}>
 					<View style={styles.profile_pic}></View>
 					<View
@@ -62,7 +62,7 @@ function JobDetails({route, navigation}) {
 						>
 							<View style={{ marginBottom: "3%" }}>
 								<Text style={{ marginBottom: "10%" }}>Agent</Text>
-								<Text>Mike Owusu</Text>
+								<Text>{route.params.name}</Text>
 							</View>
 						</View>
 						<View
@@ -89,7 +89,7 @@ function JobDetails({route, navigation}) {
 				</View>
 				<View style={{ flexDirection: "row", marginBottom: 15 }}>
 					<Text style={{ marginRight: 20, fontWeight: "bold" }}>
-						Job Location
+						Job Location:
 					</Text>
 					<Text>Pineapple strret,Accra</Text>
 				</View>
@@ -123,7 +123,7 @@ function JobDetails({route, navigation}) {
 			</View>
 		</SafeAreaView>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	main: {

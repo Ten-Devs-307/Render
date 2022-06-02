@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import UserProfile, { Home } from "../screens";
 import JobsScreen from "../screens/JobsScreen";
 import HomeScreen from "../screens/HomeScreen";
