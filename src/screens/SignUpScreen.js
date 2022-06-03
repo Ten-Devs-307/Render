@@ -22,7 +22,7 @@ const SignUpScreen = () => {
 	const [name, setName] = useState(null);
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
-	const [role, setRole] = useState('');
+	const [role, setRole] = useState("");
 
 	const { register, isLoading } = useContext(AuthContext);
 
@@ -109,7 +109,7 @@ const SignUpScreen = () => {
 						onSelect={(selectedItem, index) => {
 							// console.log(selectedItem, index);
 							setRole(selectedItem);
-							console.log('your role is: '+role);
+							console.log("your role is: " + role);
 						}}
 						buttonTextAfterSelection={(selectedItem, index) => {
 							// text represented after item is selected
@@ -126,7 +126,7 @@ const SignUpScreen = () => {
 				<View>
 					<Button
 						title="Register"
-						onPress={() => register(email, name, password,role)}
+						onPress={() => register(email, name, password, role)}
 						style={styles.submitButton}
 					/>
 				</View>
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
 		fontFamily: "Poppins_bold",
 		color: COLORS.primary,
 		justifyContent: "center",
-		alignItems: "center"
+		alignItems: "center",
 	},
 	formHeading: {
 		// color: "#000",
