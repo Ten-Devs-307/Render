@@ -17,7 +17,7 @@ const UserProfile = () => {
 	const { userInfo } = useContext(AuthContext);
 	const [userData, setUserData] = useState([]);
 
-	useEffect(async () => {
+	const getUserDetailsWithFetch = async () => {
 		axios.get(`${API_URL}/user-profile/`,
 		{
 	     headers:
@@ -27,29 +27,12 @@ const UserProfile = () => {
 			}).then(res => {
 				let userObject = res.data;
 				setUserData(userObject);
-				console.log(userObject)
-				return userData;
 			}).catch(e => {
 				console.log(e);
 			});
-	}, []);
+	};
 
-	// const getUserDetailsWithFetch = async () => {
-	// 	axios.get(`${API_URL}/user-profile/`,
-	// 	{
-	//      headers:
-	// 		{
-	// 			'Content-Type': 'application/json',
-	// 			'Authorization': `Token ${userInfo.token}`}
-	// 		}).then(res => {
-	// 			let userObject = res.data;
-	// 			setUserData(userObject);
-	// 			return userData;
-	// 		}).catch(e => {
-	// 			console.log(e);
-	// 		});
-	// };
-
+	getUserDetailsWithFetch();
 	return (
 		<View style={styles.root}>
 			{/* Agent profile */}
@@ -57,12 +40,12 @@ const UserProfile = () => {
 
 			{/* Profile Name */}
 			<View style={styles.prof_name_grp}>
-				<Text style={styles.profile_name}>Stigar</Text>
+				<Text style={styles.profile_name}>{userData.user.name}</Text>
 				<MaterialCommunityIcons name="check-decagram" size={20} color="black" />
 			</View>
 
 			{/* Profile Title */}
-			<Text style={styles.profile_title}>Personal Shopper</Text>
+			<Text style={styles.profile_title}>{userData.user.customer_merchant_id}</Text>
 
 			{/* Tasks Completed and Rating */}
 			<View style={styles.tasks_complete}>
@@ -84,7 +67,7 @@ const UserProfile = () => {
 						size={20}
 						color="black"
 					/>
-					<Text style={styles.profile_det}></Text>
+					<Text style={styles.profile_det}>{userData.user.email}</Text>
 				</View>
 				<View style={styles.profile_details}>
 					<FontAwesome
@@ -93,7 +76,7 @@ const UserProfile = () => {
 						size={20}
 						color="black"
 					/>
-					<Text style={styles.profile_det}>0274439452</Text>
+					<Text style={styles.profile_det}>{userData.user.phone}</Text>
 				</View>
 				<View style={styles.profile_details}>
 					<Entypo
@@ -102,7 +85,7 @@ const UserProfile = () => {
 						size={20}
 						color="black"
 					/>
-					<Text style={styles.profile_det}>Legon, Accra</Text>
+					<Text style={styles.profile_det}>{userData.user.location}</Text>
 				</View>
 			</View>
 		</View>
@@ -114,7 +97,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		// padding: 20,
 	},
 	// styling the image
 	image: {
@@ -130,7 +112,6 @@ const styles = StyleSheet.create({
 	},
 	profile_name: {
 		fontSize: 26,
-		// marginTop: 20,
 		fontWeight: "bold",
 		marginRight: 5,
 	},
@@ -141,7 +122,6 @@ const styles = StyleSheet.create({
 		fontWeight: "400",
 	},
 	profile_display: {
-		// flex: 1,
 		flexDirection: "column",
 		alignContent: "center",
 		justifyContent: "center",
@@ -149,8 +129,6 @@ const styles = StyleSheet.create({
 	profile_details: {
 		flexDirection: "row",
 		marginBottom: 10,
-		// alignItems: "center",
-		// justifyContent: "center",
 	},
 	profile_det: {
 		fontSize: 18,

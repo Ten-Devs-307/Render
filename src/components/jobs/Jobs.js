@@ -26,8 +26,8 @@ export default class Jobs extends Component {
      return <View styles={{ marginBottom: 100 }}>
 				{this.state.jobs.map((job, index) =>
           <ListJobs type="agent" key={index} name={job.service_name} location={job.location} charge={job.charge}
-            onPress={() => navigation.navigate('JobDetails', { job })}
-            />
+            onPress={() => navigation.navigate('JobDetails', { job })
+} />
 			)}
 			</View>
   }

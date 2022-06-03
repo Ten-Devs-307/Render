@@ -133,10 +133,13 @@ export const AuthProvider = ({ children }) => {
     try {
       setSplashLoading(true);
       let userInfo = await AsyncStorage.getItem('userInfo');
+      let userProfile = await AsyncStorage.getItem('userProfile');
       userInfo = JSON.parse(userInfo);
+      userProfile = JSON.parse(userProfile);
 
       if (userInfo) {
         setUserInfo(userInfo);
+        setUserProfile(userProfile);
       }
       setSplashLoading(false);
     }

@@ -21,9 +21,12 @@ const { width } = Dimensions.get("screen");
 
 import { AuthContext } from "../context/AuthContext";
 const HomeScreen = () => {
-	const { logout } = useContext(AuthContext);
+	// const { logout } = useContext(AuthContext);
 	const navigation = useNavigation();
 
+	const onProfilePress = () => {
+		navigation.navigate("UserProfile");
+	};
 	const ListServices = () => {
 		const ServicesList = [
 			{ title: "Laundry Services" },
@@ -98,7 +101,7 @@ const HomeScreen = () => {
 						Accra
 					</Text>
 				</View>
-				<Pressable onPress={onUserPress}>
+				<Pressable onPress={onProfilePress}>
 					{/* <Image source={{ uri: profile_img }} style={styles.profileImage} /> */}
 					<Icon name="menu" size={35} color={"grey"} />
 				</Pressable>
@@ -115,7 +118,7 @@ const HomeScreen = () => {
 						<Icon name="search" size={25} color={"grey"} />
 						<TextInput placeholder="Search address, City, Location, Agent name..." />
 					</View>
-					<Pressable onPress={logout}>
+					<Pressable onPress={onProfilePress}>
 						<View style={styles.sortButton}>
 							<Icon name="tune" size={25} color={"white"} />
 						</View>
@@ -125,15 +128,6 @@ const HomeScreen = () => {
 				<JobCategoriesList />
 				<ListCategories />
 				<Jobs />
-				{/* <Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card />
-				<Card /> */}
 				<View style={{ marginTop: 100 }}></View>
 			</ScrollView>
 		</SafeAreaView>
