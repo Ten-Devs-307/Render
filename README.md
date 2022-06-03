@@ -1,6 +1,6 @@
-# React Native - Food Delivery App
+# React Native - Unskilled Labour App
 
-The Food Delivery App is created using [**React Native**](https://reactnative.dev "Cross Platform Mobile Application Development Framework") with support of few other popular third party libraries like [**React Navigation**](https://reactnavigation.org "For Screen Navigations"), [**Axios**](https://axios-http.com "For HTTP Requests") etc.
+The Unskilled Labour App created using [**React Native**](https://reactnative.dev "Cross Platform Mobile Application Development Framework") with support of few other popular third party libraries like [**React Navigation**](https://reactnavigation.org "For Screen Navigations"), [**Axios**](https://axios-http.com "For HTTP Requests") etc.
 
 ## Icon Libraries
 
@@ -13,13 +13,11 @@ The Food Delivery App is created using [**React Native**](https://reactnative.de
   - [Stack Navigator](https://reactnavigation.org/docs/stack-navigator "Stack Navigator")
   - [Bottom Tab Navigator](https://reactnavigation.org/docs/bottom-tab-navigator "Bottom Tab Navigator")
 - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons "Popular React Native Icon Library")
-- [Lottie React Native](https://github.com/lottie-react-native/lottie-react-native "For Animated Icons")
 - [Axios](https://axios-http.com "For HTTP Requests")
 - [React Native Async Storage](https://react-native-async-storage.github.io/async-storage "For Local Storage")
 - [Redux](https://redux.js.org "For State Management")
 - [React Redux](https://react-redux.js.org "For State Management in React")
 - [Redux Thunk](https://github.com/reduxjs/redux-thunk "Redux Thunk for Async State Management")
-- [React Native Maps](https://github.com/react-native-maps/react-native-maps "For Maps")
 
 ## UI Design
 
@@ -38,7 +36,7 @@ git clone https://github.com/ameenfarook/food_delivery_app.git
 
 ```sh
 # navigate to app directory
-cd food_delivery_app
+cd render
 
 npm install
 ```
