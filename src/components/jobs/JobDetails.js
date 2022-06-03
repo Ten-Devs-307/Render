@@ -62,7 +62,7 @@ const JobDetails = ({ navigation, route }) => {
 						>
 							<View style={{ marginBottom: "3%" }}>
 								<Text style={{ marginBottom: "10%" }}>Agent</Text>
-								<Text>{route.params.name}</Text>
+								<Text>Mike Owusu</Text>
 							</View>
 						</View>
 						<View
@@ -95,7 +95,7 @@ const JobDetails = ({ navigation, route }) => {
 				</View>
 				<Text style={{ fontSize: 20, fontWeight: "bold" }}>Job Details</Text>
 				<View style={styles.job_detail}>
-					<Text>whhekrjlskj fkj asdkfj a;lskdfj a;slkdfj asdlkfjs adf;</Text>
+					<Text>Wash some clothes for me</Text>
 				</View>
 				<View style={styles.duration}>
 					<MaterialIcons
