@@ -29,7 +29,7 @@ The Unskilled Labour App created using [**React Native**](https://reactnative.de
 
 ```sh
 # Clone the app
-git clone https://github.com/ameenfarook/food_delivery_app.git
+https://github.com/Ten-Devs-307/Render.git
 ```
 
 ### 2. Install all dependencies
@@ -39,4 +39,11 @@ git clone https://github.com/ameenfarook/food_delivery_app.git
 cd render
 
 npm install
+```
+
+```sh
+# navigate to app directory
+expo start
+
+
 ```
