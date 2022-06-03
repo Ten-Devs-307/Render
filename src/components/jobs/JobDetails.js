@@ -21,9 +21,6 @@ import CustomButton from "../CustomButton";
 const JobDetails = ({ navigation, route }) => {
 	const job = route.params;
 
-function JobDetails({route, navigation}) {
-	// const navigation = useNavigation();
-	// const { job } = route.params;
 	const onBackPress = () => {
 		navigation.navigate("HomeScreen");
 	};
@@ -54,7 +51,7 @@ function JobDetails({route, navigation}) {
 				<Text style={{ marginBottom: "2%", fontWeight: "bold" }}>
 					labourer job
 				</Text>
-				<Text style={{ marginBottom: "10%" }}>Job ID:12345</Text>
+				<Text style={{ marginBottom: "10%" }}>Job ID: 12345</Text>
 				<View style={styles.profile}>
 					<View style={styles.profile_pic}></View>
 					<View
