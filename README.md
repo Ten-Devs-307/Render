@@ -21,7 +21,7 @@ The Unskilled Labour App created using [**React Native**](https://reactnative.de
 
 ## UI Design
 
-[**Food Door App** by _Ahmed El-okle_](https://www.behance.net/gallery/104564545/Food-Door-app?tracking_source=search_projects_recommended%7Cfood%20delivery%20mobile%20app)
+[\*\*Unskilled Labour App](<https://www.figma.com/file/9u0zxJo1HFVPIib8CIRZ3R/Unskilled-labour-project(customer-app)?node-id=0%3A1>)
 
 ## Setup instructions
 
