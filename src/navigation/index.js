@@ -9,7 +9,7 @@ import ForgotPassword from "../screens/ForgotPassword";
 import StartUpScreen from "../screens/StartUpScreen";
 import UserProfile from "../screens/UserProfile";
 import HomeScreen from "../screens/HomeScreen";
-import JobDetails from "../screens/JobDetails";
+import JobDetails from "../components/jobs/JobDetails";
 import SplashScreen from "../screens/SplashScreen";
 import TabsScreen from "../screens/TabsScreen";
 

@@ -16,7 +16,10 @@ import {
 	MaterialIcons,
 } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import CustomButton from "../components/CustomButton";
+import CustomButton from "../CustomButton";
+
+const JobDetails = ({ navigation, route }) => {
+	const job = route.params;
 
 function JobDetails({route, navigation}) {
 	// const navigation = useNavigation();
@@ -89,13 +92,13 @@ function JobDetails({route, navigation}) {
 				</View>
 				<View style={{ flexDirection: "row", marginBottom: 15 }}>
 					<Text style={{ marginRight: 20, fontWeight: "bold" }}>
-						Job Location
+						Job Location:
 					</Text>
 					<Text>Pineapple strret,Accra</Text>
 				</View>
 				<Text style={{ fontSize: 20, fontWeight: "bold" }}>Job Details</Text>
 				<View style={styles.job_detail}>
-					<Text>whhekrjlskj fkj asdkfj a;lskdfj a;slkdfj asdlkfjs adf;</Text>
+					<Text>Wash some clothes for me</Text>
 				</View>
 				<View style={styles.duration}>
 					<MaterialIcons
@@ -123,7 +126,7 @@ function JobDetails({route, navigation}) {
 			</View>
 		</SafeAreaView>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	main: {
