@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useContext } from "react";
 import {
 	StyleSheet,
@@ -12,8 +11,6 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { useNavigation } from "@react-navigation/native";
-import CustomButton from "../components/CustomButton";
-import CustomInput from "../components/CustomInput";
 import { SIZES, COLORS } from "../constants/theme";
 import { useFonts } from "expo-font";
 import SelectDropdown from "react-native-select-dropdown";
@@ -25,7 +22,6 @@ const SignUpScreen = () => {
 	const [name, setName] = useState(null);
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
-	const [number, setNumber] = useState(null);
 	const [role, setRole] = useState('');
 
 	const { register, isLoading } = useContext(AuthContext);
@@ -127,30 +123,10 @@ const SignUpScreen = () => {
 						}}
 					/>
 				</View>
-
-				{/* Phone Number */}
-				<View style={styles.wrapper}>
-					<TextInput
-						placeholder="Phone Number"
-						placeholderTextColor="#000"
-						style={styles.input}
-						value={number}
-						onChangeText={(number) => setNumber(number)}
-						maxLength={10}
-					/>
-				</View>
-
-				{/* Custom Button */}
 				<View>
-					{/* <CustomButton
-						text="Register"
-						onPress={register(email, name, password)}
-						style={styles.submitButton}
-					/> */}
-					{/* I commented out the custom button because it was giving errors.. */}
 					<Button
 						title="Register"
-						onPress={() => register(email, name, password)}
+						onPress={() => register(email, name, password,role)}
 						style={styles.submitButton}
 					/>
 				</View>
@@ -181,9 +157,7 @@ const styles = StyleSheet.create({
 		fontFamily: "Poppins_bold",
 		color: COLORS.primary,
 		justifyContent: "center",
-		alignItems: "center",
-		// fontWeight: "700",
-		// alignSelf: 'center'
+		alignItems: "center"
 	},
 	formHeading: {
 		// color: "#000",
